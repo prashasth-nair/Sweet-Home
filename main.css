@@ -1,0 +1,362 @@
+body {
+    background-image: url('Wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+#Text {
+    padding-right: 10px;
+    padding-left: 10px;
+    /* Tell the input to use all the available space */
+    flex-grow: 2;
+    border-radius: 15px 0px 0px 15px;
+    /* And hide the input's outline, so the form looks like the outline */
+    border: none;
+}
+
+input:focus {
+    /* removing the input focus blue box. Put this on the form if you like. */
+    outline: none;
+}
+.Widgets{
+    width: 500px;
+    margin-left: 20px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 30px;
+    margin: 5px;
+    place-items: center;
+}
+#quotes{
+    display:block;
+    background-color:  rgba(0,0,0, 0.4); 
+    color: white;
+    padding: 15px;
+    margin-left: 120px;
+    border-radius: 10px;
+    text-align: center;
+    
+}
+
+
+/* Settings */
+/* -------------------------------------------- */
+.Settings_window {
+    width: 700px;
+    height: 500px;
+    padding: 0px;
+}
+
+#settings_title {
+    margin: 15px;
+    line-height: 1.16667em;
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.Settings_window::backdrop {
+    background: rgb(0 0 0 / .6);
+
+}
+
+.dialogue_button {
+
+    width: 100%;
+    height: 100%;
+}
+
+#settings_cancel {
+    background: none;
+    border: none;
+    color: blue;
+    position: absolute;
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 30px;
+    margin-bottom: 15px;
+    bottom: 0px;
+    right: 60px;
+}
+
+#settings_cancel:hover {
+    background-color: #eef7fe;
+}
+
+#settings_save {
+    background: none;
+    border: none;
+    color: blue;
+    position: absolute;
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+    bottom: 0px;
+    right: 10px;
+}
+
+#settings_save:hover {
+    background-color: #eef7fe;
+}
+
+
+
+.settings_sidebar {
+    position: relative;
+    width: 190px;
+    left: 0;
+    float: left;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.settings_sidebar ul {
+    list-style-type: none;
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+    padding-bottom: 8px;
+
+}
+
+.settings_sidebar ul button {
+    display: block;
+    line-height: 20px;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    color: black;
+    margin: 0;
+    padding: 15px;
+    text-decoration: none;
+    background: none;
+    border: none;
+
+}
+
+
+.settings_sidebar ul button:hover {
+    background-color: #ebebeb;
+}
+
+.General {
+    float: left;
+    width: auto;
+    display: block;
+}
+
+#time_label {
+    font-size: 1rem;
+
+}
+
+.time_settings {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    /* Tells number of columns in grid */
+
+}
+
+#hour {
+    margin-left: 140px;
+    border: none;
+    font-size: 15px;
+    padding: 2px;
+    border-bottom: 1px solid black;
+}
+
+.Search {
+    display: none;
+    float: left;
+    width: auto;
+}
+
+#new_tab_label {
+    font-size: 1rem;
+
+}
+
+.new_tab {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 170px 190px 60px;
+    grid-column-gap: 0px;
+    grid-template-rows: 1fr;
+    place-items: center;
+
+    /* Tells number of columns in grid */
+
+}
+
+/* Switch button */
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 50px;
+    height: 25px;
+    background: grey;
+    display: block;
+    border-radius: 25px;
+    position: relative;
+}
+
+label:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 18px;
+    background: #fff;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+input:checked+label {
+    background: #bada55;
+}
+
+input:checked+label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 30px;
+}
+
+/* -------------------------- */
+.wrapper {
+    display: grid;
+    position: relative;
+    place-items: center;
+    width: 100%;
+    top: 10px
+}
+
+
+#time {
+    font-size: 50px;
+    line-height: 1.1;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 10%), -1px -1px 2px rgb(0 0 0 / 10%), -1px 1px 2px rgb(0 0 0 / 10%), 1px -1px 2px rgb(0 0 0 / 10%);
+    color: white;
+    left: 100px;
+    padding: 0px;
+    margin-left: 50px;
+
+}
+
+#settings {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+
+}
+
+#date_time {
+    margin-left: 20px;
+}
+
+#day_date {
+    font-size: 20px;
+    color: white;
+    left: 100px;
+    padding: 0px;
+    margin-left: 50px;
+
+}
+
+#Search_button {
+    /* Just a little styling to make it pretty */
+    border: 1px solid white;
+    background: white;
+    color: black;
+    border-radius: 0px 15px 15px 0px;
+
+}
+
+#Form {
+    /* This bit sets up the horizontal layout */
+    position: absolute;
+
+    top: 50px;
+    display: flex;
+
+    position: relative;
+    margin: 0 auto;
+
+    flex-direction: row;
+    width: 550px;
+    height: 35px;
+    /* This bit draws the box around it */
+    border: none;
+
+    /* I've used padding so you can see the edges of the elements. */
+    padding: 2px;
+}
+
+
+/* Change elements if window size is reduced */
+@media screen and (max-width: 1360px) {
+    #Form {
+
+        width: 390px;
+
+    }
+}
+@media screen and (max-width: 1229px) {
+    #Form {
+
+        width: 330px;
+
+    }
+}
+/* if min width is 1072px then apply this css */
+@media screen and (max-width: 1122px) {
+    .wrapper {
+        display: grid;
+        position: relative;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+        top: 200px;
+    }
+
+    #Form {
+        /* This bit sets up the horizontal layout */
+        position: absolute;
+    
+        top: 50px;
+        display: flex;
+    
+        position: relative;
+        margin: 0 auto;
+    
+        flex-direction: row;
+        width: 400px;
+        height: 35px;
+        /* This bit draws the box around it */
+        border: none;
+    
+        /* I've used padding so you can see the edges of the elements. */
+        padding: 2px;
+    }
+    #quotes{
+        display: none;
+        
+    }
+}
