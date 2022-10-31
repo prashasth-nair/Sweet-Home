@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        
+
         <div class="parent">
             <div class="main">
                 <div class="Widgets">
@@ -24,38 +24,43 @@
                             Monday
                         </div>
                     </div>
-    
+
                     <div class="quotes_widgets">
                         <p id="quotes">
-                            Friends show their love in times of trouble, not in happiness.
+                            Friends show their love in times of trouble, not in
+                            happiness.
                         </p>
                     </div>
                 </div>
-            <div class='wrapper'>
-                <!-- search box  -->
-                <form id="Form">
-                    <input autocomplete="off" id="Text" name="text_field"
-                        placeholder="Search Google" type="text"
-                        aria-autocomplete="list"
-                        aria-labelledby="downshift-simple-label" value=""><br><br>
- 
-                    <button id="Search_button" type="button"><i class="fa-solid
-                            fa-magnifying-glass"></i></button>
-                </form>
-                <div id="suggestion_list">
-                    <ul id="list">
-                        
-                    </ul>
+                <div class='wrapper'>
+                    <!-- search box  -->
+                    <form id="Form">
+                        <input autocomplete="off" id="Text" name="text_field"
+                            placeholder="Search Google" type="text"
+                            aria-autocomplete="list"
+                            aria-labelledby="downshift-simple-label" value=""><br><br>
+                        <button id="Search_button" type="button"><i
+                                class="fa-solid
+                                fa-magnifying-glass"></i></button>
+                    </form>
+                    <div id="suggestion_list">
+                        <ul id="list">
+
+                        </ul>
+                    </div>
                 </div>
+
+
+
             </div>
-   
-
-
-        </div>
             <div class="bottom_bar">
 
-                <button id="settings">
+                <button id="settings" title="Settings">
                     <i class="fa-solid fa-gear"></i>
+
+                </button>
+                <button id="wallpaper" title="Wallpapers">
+                    <i class="fa-solid fa-image"></i>
 
                 </button>
             </div>
@@ -97,6 +102,18 @@
                 <button id="settings_save">Save</button>
             </div>
 
+        </dialog>
+
+        <dialog class="Wallpaper_window">
+            <div class="wallpaper_header">
+                <button id="close">
+                    <i class="fa-solid fa-x"></i>
+                </button>
+                
+            </div>
+            <div class="wallpaper_main" id="image_loc">
+
+            </div>
         </dialog>
         <script src="main.js"></script>
     </body>

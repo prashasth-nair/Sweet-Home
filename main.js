@@ -1,7 +1,11 @@
+
 // Variables
 const settings_dialoge = document.querySelector('.Settings_window');
+const Wallpaper_dialoge = document.querySelector('.Wallpaper_window');
+const Wallpaper_close = document.querySelector('#close');
 const search_box = document.querySelector('#Text');
 const settings_button = document.querySelector('#settings');
+const wallpaper_button = document.querySelector('#wallpaper');
 const settings_cancel_button = document.querySelector('#settings_cancel');
 const settings_save_button = document.querySelector('#settings_save');
 const quotes = document.querySelector('#quotes');
@@ -15,21 +19,42 @@ const Search_screen = document.querySelector('.Search');
 var new_tab_isChecked = localStorage.getItem('new_tab_isChecked');
 
 var hour_format = localStorage.getItem('hour_format');
+var bgimage = localStorage.getItem('wallpaper_img');
+if(bgimage!=null){
+    document.body.style.backgroundImage = "url(" + bgimage + ")";
+}
+
 var url = "https://api.quotable.io/random";
 
 General_tab.style.background = '#dbdbdb';
+var wallpaper_lis = ["wallpapers\\Wallpaper.jpg", "wallpapers\\Wallpaper1.jpg", "wallpapers\\Wallpaper2.jpg", "wallpapers\\Wallpaper3.jpg"];
+async function addList(loc, n) {
+    var elem = document.createElement("img");
+    document.getElementById("image_loc").appendChild(elem);
+    elem.setAttribute("class", "Images");
+    elem.setAttribute("id", "Img" + n);
+
+    elem.src = loc;
+
+}
+for (let i = 0; i < wallpaper_lis.length; i++) {
+    addList(wallpaper_lis[i], i);
+}
+document.querySelector("#image_loc").addEventListener('click', (e) => {
+    var bgimage= document.getElementById(e.target.id).src;
+    document.body.style.backgroundImage = "url(" + bgimage + ")";
+    localStorage.setItem("wallpaper_img", bgimage);
+})
 
 async function fetchDataAsync(url) {
     const response = await fetch(url);
 
     const data = await response.json();
-    document.getElementById('quotes').innerHTML = "\""+[data['content']]+"\""+"<br><br>--"+data['author'];
+    document.getElementById('quotes').innerHTML = "\"" + [data['content']] + "\"" + "<br><br>--" + data['author'];
     console.log(data);
 }
 
 fetchDataAsync(url);
-// obj = await(await fetch(url)).json();
-// 
 
 if (new_tab_isChecked === 'true') {
     document.getElementById("switch").checked = true;
@@ -45,10 +70,19 @@ document.getElementById("Text").addEventListener("keyup", suggest);
 
 settings_button.addEventListener("click", () => {
     settings_dialoge.showModal();
-})
+});
+
+wallpaper_button.addEventListener("click", () => {
+
+    Wallpaper_dialoge.showModal();
+
+});
 settings_cancel_button.addEventListener("click", () => {
     settings_dialoge.close();
-})
+});
+Wallpaper_close.addEventListener("click", () => {
+    Wallpaper_dialoge.close();
+});
 settings_save_button.addEventListener("click", () => {
     hour_format = document.getElementById('hour').value;
     new_tab_isChecked = document.getElementById('switch').checked;
@@ -190,34 +224,34 @@ async function fetchSearchData(url) {
     }
     if (data[1].length != 0) {
         for (let i = 0; i < n; i++) {
-            renderSuggestionList(data[1][i],i);
+            renderSuggestionList(data[1][i], i);
         }
     }
-    else{
+    else {
         suggest_hide()
     }
 }
 
-document.querySelector("#list").addEventListener('click',(e)=>{
+document.querySelector("#list").addEventListener('click', (e) => {
     // console.log(e.target.id);
-    search_box.value=document.getElementById(e.target.id).innerHTML;
+    search_box.value = document.getElementById(e.target.id).innerHTML;
     Click()
 })
 
-function renderSuggestionList(element,n) {
+function renderSuggestionList(element, n) {
     var li = document.createElement('li');
-    var ident = 'item'+n;
+    var ident = 'item' + n;
     li.setAttribute('id', ident);
 
     document.getElementById("list").appendChild(li);
 
     li.innerHTML = li.innerHTML + element;
-    let lis = document.querySelector('#item'+n);
+    let lis = document.querySelector('#item' + n);
     console.log(lis);
 }
 function suggest() {
     document.querySelector("#list").innerHTML = '';
-    
+
     if (search_box.value.length > 2) {
         var url = "https://amg-ss.ask.com/query?q=" + search_box.value;
         suggest_show();
@@ -229,12 +263,12 @@ function suggest() {
         suggest_hide();
     }
 }
-function suggest_show(){
+function suggest_show() {
     document.getElementById('Text').style.borderRadius = '15px 0px 0px 0px';
     document.getElementById('Search_button').style.borderRadius = '0px 15px 0px 0px';
     document.querySelector("#suggestion_list").style.display = 'block';
 }
-function suggest_hide(){
+function suggest_hide() {
     document.getElementById('Text').style.borderRadius = '15px 0px 0px 15px';
     document.getElementById('Search_button').style.borderRadius = '0px 15px 15px 0px';
     document.querySelector("#suggestion_list").style.display = 'none';

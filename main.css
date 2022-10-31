@@ -1,10 +1,14 @@
 body {
-    background-image: url('Wallpaper.jpg');
+    background-image: url('wallpapers\\Wallpaper.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
 
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+dialog{
+    border: none;
+    border-radius: 10px;
 }
 
 #Text {
@@ -40,7 +44,7 @@ input:focus {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
-.Settings_window::backdrop {
+dialog::backdrop {
     background: rgb(0 0 0 / .6);
 }
 
@@ -231,21 +235,88 @@ label:active:after {
 
 #settings {
     background: none;
-    border: none;
+    border: 1px solid white;
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
 }
 
+#settings:hover {
+    color: #333333;
+    background-color: #ffffff;
+}
+
+#wallpaper {
+    background: none;
+    border: 1px solid white;
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    color: white;
+    font-size: 15px;
+}
+
+#wallpaper:hover {
+    color: #333333;
+    background-color: #ffffff;
+}
+
+/* Wallpaper Dialoge box */
+.Wallpaper_window{
+    width: 1260px;
+}
+.wallpaper_main{
+    display: flex;
+    flex-wrap: wrap;
+}
+.wallpaper_header{
+    width: 100%;
+    height: 40px;
+}
+#close{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 10px;
+}
+#close:hover{
+    background-color: #ebebeb;
+}
+.Images {
+    width: 400px;
+    height: 200px;
+    padding: 2px;
+}
+
+/*  */
 .bottom_bar {
     position: fixed;
     bottom: 0px;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    backdrop-filter: blur(10px);
+
+    width: 100%;
+}
+.bottom_bar button{
+    border-radius: 5px;
 }
 
-#date_time{
+#date_time {
     margin-left: 150px;
 }
+
 #day_date {
     font-size: 20px;
     color: white;
@@ -272,11 +343,13 @@ label:active:after {
     margin: 10px;
     /* place-items: center; */
 }
-.quotes_widgets{
+
+.quotes_widgets {
     position: fixed;
     width: 500px;
     top: 150px;
 }
+
 #quotes {
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
@@ -289,7 +362,6 @@ label:active:after {
 
 #Form {
     /* This bit sets up the horizontal layout */
-    /* position: absolute; */
 
     top: 50px;
     left: 20px;
@@ -385,32 +457,16 @@ label:active:after {
     }
 
     #Form {
-        /* This bit sets up the horizontal layout */
-        position: relative;
-
         top: 10px;
-        left: 0px;
-        right: 150px;
+        left: -150px;
 
-
-        display: flex;
-
-        margin: 0 auto;
-
-        flex-direction: row;
         width: 400px;
-        height: 35px;
-        /* This bit draws the box around it */
-        border: none;
-
-        /* I've used padding so you can see the edges of the elements. */
-        padding: 2px;
     }
 
     #suggestion_list {
 
         top: 8px;
-        left: 0px;
+        left: -150px;
         width: 396px;
     }
 
@@ -423,23 +479,12 @@ label:active:after {
 
 @media screen and (max-width: 765px) {
     #Form {
-        /* This bit sets up the horizontal layout */
-        position: relative;
 
         top: 10px;
         left: -80px;
 
-        display: flex;
-        margin: 0 auto;
-
-        flex-direction: row;
         width: 400px;
         height: 35px;
-        /* This bit draws the box around it */
-        border: none;
-
-        /* I've used padding so you can see the edges of the elements. */
-        padding: 2px;
     }
 
     #suggestion_list {
