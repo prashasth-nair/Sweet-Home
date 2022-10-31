@@ -1,9 +1,10 @@
 // Variables
 const settings_dialoge = document.querySelector('.Settings_window');
+const search_box = document.querySelector('#Text');
 const settings_button = document.querySelector('#settings');
 const settings_cancel_button = document.querySelector('#settings_cancel');
 const settings_save_button = document.querySelector('#settings_save');
-const quotes = document.querySelector('quotes');
+const quotes = document.querySelector('#quotes');
 
 const General_tab = document.querySelector('#General_tab');
 const Search_tab = document.querySelector('#Search_tab');
@@ -22,23 +23,24 @@ async function fetchDataAsync(url) {
     const response = await fetch(url);
 
     const data = await response.json();
-    document.getElementById('quotes').innerHTML=[data['content']];
-    console.log(data['content']);
+    document.getElementById('quotes').innerHTML = "\""+[data['content']]+"\""+"<br><br>--"+data['author'];
+    console.log(data);
 }
 
 fetchDataAsync(url);
 // obj = await(await fetch(url)).json();
 // 
 
-if(new_tab_isChecked==='true'){
+if (new_tab_isChecked === 'true') {
     document.getElementById("switch").checked = true;
 }
-else{
+else {
     document.getElementById("switch").checked = false;
 }
 
 // Click events
 document.getElementById("Search_button").addEventListener("click", Click);
+document.getElementById("Text").addEventListener("keyup", suggest);
 
 
 settings_button.addEventListener("click", () => {
@@ -167,7 +169,6 @@ if (performance.navigation.type == performance.navigation.TYPE_BACK_FORWARD) {
     document.getElementById('Text').value = "";
 }
 
-
 document.getElementById('Form').onsubmit = function () {
     // Enter key will search
     // process
@@ -175,9 +176,73 @@ document.getElementById('Form').onsubmit = function () {
     return false;
 }
 
+
+async function fetchSearchData(url) {
+    const response = await fetch(url);
+
+    const data = await response.json();
+    document.querySelector("#list").innerHTML = '';
+    var n;
+    if (data[1].length > 5) {
+        n = 5;
+    } else {
+        n = data[1].length
+    }
+    if (data[1].length != 0) {
+        for (let i = 0; i < n; i++) {
+            renderSuggestionList(data[1][i],i);
+        }
+    }
+    else{
+        suggest_hide()
+    }
+}
+
+document.querySelector("#list").addEventListener('click',(e)=>{
+    // console.log(e.target.id);
+    search_box.value=document.getElementById(e.target.id).innerHTML;
+    Click()
+})
+
+function renderSuggestionList(element,n) {
+    var li = document.createElement('li');
+    var ident = 'item'+n;
+    li.setAttribute('id', ident);
+
+    document.getElementById("list").appendChild(li);
+
+    li.innerHTML = li.innerHTML + element;
+    let lis = document.querySelector('#item'+n);
+    console.log(lis);
+}
+function suggest() {
+    document.querySelector("#list").innerHTML = '';
+    
+    if (search_box.value.length > 2) {
+        var url = "https://amg-ss.ask.com/query?q=" + search_box.value;
+        suggest_show();
+
+
+        fetchSearchData(url)
+    }
+    else {
+        suggest_hide();
+    }
+}
+function suggest_show(){
+    document.getElementById('Text').style.borderRadius = '15px 0px 0px 0px';
+    document.getElementById('Search_button').style.borderRadius = '0px 15px 0px 0px';
+    document.querySelector("#suggestion_list").style.display = 'block';
+}
+function suggest_hide(){
+    document.getElementById('Text').style.borderRadius = '15px 0px 0px 15px';
+    document.getElementById('Search_button').style.borderRadius = '0px 15px 15px 0px';
+    document.querySelector("#suggestion_list").style.display = 'none';
+}
+
 function Click() {
     var query = 'http://google.com/search?q=' + document.getElementById('Text').value;
-    if (new_tab_isChecked==='true') {
+    if (new_tab_isChecked === 'true') {
         window.open(query);//opens page in new tab
     } else {
 

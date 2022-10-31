@@ -11,41 +11,54 @@
     </head>
 
     <body>
-        <!-- search box  -->
+        
         <div class="parent">
+            <div class="main">
+                <div class="Widgets">
+                    <!-- Time and date widget  -->
+                    <div id="date_time">
+                        <div id="time">
+                            12:37
+                        </div>
+                        <div id="day_date">
+                            Monday
+                        </div>
+                    </div>
+    
+                    <div class="quotes_widgets">
+                        <p id="quotes">
+                            Friends show their love in times of trouble, not in happiness.
+                        </p>
+                    </div>
+                </div>
             <div class='wrapper'>
+                <!-- search box  -->
                 <form id="Form">
                     <input autocomplete="off" id="Text" name="text_field"
                         placeholder="Search Google" type="text"
                         aria-autocomplete="list"
                         aria-labelledby="downshift-simple-label" value=""><br><br>
+ 
                     <button id="Search_button" type="button"><i class="fa-solid
                             fa-magnifying-glass"></i></button>
                 </form>
-            </div>
-
-            <div class="Widgets">
-                <!-- Time and date widget  -->
-                <div id="date_time">
-                    <div id="time">
-                        12:37
-                    </div>
-                    <div id="day_date">
-                        Monday
-                    </div>
-                </div>
-
-                <div class="quotes_widgets">
-                    <p id="quotes">
-                        hello
-                    </p>
+                <div id="suggestion_list">
+                    <ul id="list">
+                        
+                    </ul>
                 </div>
             </div>
+   
 
-            <button id="settings">
-                <i class="fa-solid fa-gear"></i>
 
-            </button>
+        </div>
+            <div class="bottom_bar">
+
+                <button id="settings">
+                    <i class="fa-solid fa-gear"></i>
+
+                </button>
+            </div>
 
         </div>
         <dialog class="Settings_window">
