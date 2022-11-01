@@ -1,5 +1,5 @@
 
-![Image](\src\homes.png)
+![Image](src/homes.png)
 # Sweet Home
 
 Sweet Home customize your New Tab page and replaces the original new tab with more clean look.
