@@ -1,10 +1,6 @@
 
-<!-- ![Image](src/homes.png) -->
-<p align="center">
-<img src="src/homes.png" alt="drawing" width="200" />
-  </p>
-
-# Sweet-Home
+![Image](src/homes.png)
+# Sweet Home
 
 Sweet Home customize your New Tab page and replaces the original new tab with more clean look.
 
