@@ -1,12 +1,14 @@
 body {
-    background-image: url('wallpapers\\Wallpaper.jpg');
+    /* background-image: url('wallpapers\\Wallpaper.jpg'); */
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 100% 100%;
-
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
-dialog{
+
+dialog {
     border: none;
     border-radius: 10px;
 }
@@ -26,6 +28,200 @@ input:focus {
     outline: none;
 }
 
+/* Bookmark window */
+
+.Bookmark_window {
+    width: 650px;
+    height: 250px;
+}
+
+.bookmark_header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 18px;
+    text-align: left;
+
+}
+
+#bookmark_close {
+    margin-top: 10px;
+}
+
+.bookmark_main {
+    display: grid;
+    padding: 10px;
+
+}
+.icon-field{
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    left: 50px;
+    border-radius: 16px;
+    background: #59687d;
+}
+:root {
+
+    --input-color: #99A3BA;
+    --input-border: #CDD9ED;
+    --input-background: #fff;
+    --input-placeholder: #CBD1DC;
+
+    --input-border-focus: #275EFE;
+
+    --group-color: var(--input-color);
+    --group-border: var(--input-border);
+    --group-background: #EEF4FF;
+
+    --group-color-focus: #fff;
+    --group-border-focus: var(--input-border-focus);
+    --group-background-focus: #678EFE;
+
+}
+
+.form-field {
+    display: block;
+    padding: 8px 16px;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: 6px;
+    color: var(--input-color);
+    border: 1px solid var(--input-border);
+    background: var(--input-background);
+    transition: border .3s ease;
+
+}
+
+.form-field::placeholder {
+    color: var(--input-placeholder);
+}
+
+.form-field:focus {
+    outline: none;
+    border-color: var(--input-border-focus);
+}
+
+.form-group .form-field {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.form-group span {
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 25px;
+    color: var(--group-color);
+    background: var(--group-background);
+    border: 1px solid var(--group-border);
+    transition: background .3s ease, border .3s ease, color .3s ease;
+}
+
+.form-group span :focus {
+    color: var(--group-color-focus);
+    background: var(--group-background-focus);
+    border-color: var(--group-border-focus);
+}
+
+.form-group {
+    position: relative;
+    display: flex;
+    width: 500px;
+    padding: 2px;
+    margin-left: 120px;
+}
+
+#bookmark_save {
+    background: none;
+    border: none;
+    color: blue;
+    position: absolute;
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+    bottom: 0px;
+    right: 10px;
+}
+
+#bookmark_save:hover {
+    background-color: #eef7fe;
+}
+
+.grid {
+    position: absolute;
+    left: 680px;
+    width: 650px;
+    top: 120px;
+    display: flex;
+}
+
+.bookmark {
+    display: grid;
+    gap: 100px;
+}
+
+.item {
+    display: block;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    line-height: 200px;
+    margin: 5px;
+    margin-left: 30px;
+
+    margin-bottom: 40px;
+    text-align: top;
+    z-index: 1;
+
+}
+
+
+.item.muuri-item-dragging {
+    z-index: 3;
+}
+
+.item.muuri-item-releasing {
+    z-index: 2;
+}
+
+.item.muuri-item-hidden {
+    z-index: 0;
+}
+
+.item-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 16px;
+    background: #59687d;
+    font-size: 20px;
+    text-align: center;
+}
+
+.item-content label {
+    position: relative;
+    font-size: 16px;
+    top: -40px;
+}
+
+.item.muuri-item-dragging .item-content {
+    background: #8993a2;
+}
+
+.item.muuri-item-releasing .item-content {
+    background: #152c43;
+}
+
+/*  */
 
 /* Settings */
 /* -------------------------------------------- */
@@ -181,7 +377,7 @@ input[type=checkbox] {
     visibility: hidden;
 }
 
-label {
+.new_tab label {
     cursor: pointer;
     text-indent: -9999px;
     width: 50px;
@@ -192,7 +388,7 @@ label {
     position: relative;
 }
 
-label:after {
+.new_tab label:after {
     content: '';
     position: absolute;
     top: 5px;
@@ -204,16 +400,16 @@ label:after {
     transition: 0.3s;
 }
 
-input:checked+label {
+.new_tab input:checked+label {
     background: #bada55;
 }
 
-input:checked+label:after {
+.new_tab input:checked+label:after {
     left: calc(100% - 5px);
     transform: translateX(-100%);
 }
 
-label:active:after {
+.new_tab label:active:after {
     width: 30px;
 }
 
@@ -249,6 +445,8 @@ label:active:after {
     background-color: #ffffff;
 }
 
+
+
 #wallpaper {
     background: none;
     border: 1px solid white;
@@ -266,18 +464,56 @@ label:active:after {
 }
 
 /* Wallpaper Dialoge box */
-.Wallpaper_window{
+.Wallpaper_window {
     width: 1260px;
+    height: 600px;
+    overflow-x: hidden;
+
 }
-.wallpaper_main{
+
+.wallpaper_bottom_bar {
+    position: absolute;
+    display: grid;
+    width: 1250px;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    place-items: center;
+    background-color: #eef7fe;
+    bottom: 0px;
+}
+
+.wallpaper_bottom_bar button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    width: 300px;
+    color: black;
+}
+
+.wallpaper_bottom_bar button:hover {
+    color: #42a5f5;
+}
+
+.wallpaper_bottom_bar button:focus {
+    color: #42a5f5;
+}
+
+.wallpaper_main {
     display: flex;
     flex-wrap: wrap;
 }
-.wallpaper_header{
+
+.wallpaper_header {
     width: 100%;
     height: 40px;
+
+
 }
-#close{
+
+.Close {
     position: absolute;
     top: 0px;
     right: 0px;
@@ -290,13 +526,88 @@ label:active:after {
     padding: 10px;
     margin-right: 10px;
 }
-#close:hover{
+
+.Close:hover {
     background-color: #ebebeb;
 }
+
 .Images {
     width: 400px;
     height: 200px;
     padding: 2px;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn {
+    display: inline-block;
+    margin-right: 10px;
+    background: #339DFF;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 38px;
+    border-radius: 50px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 170px;
+    text-align: center;
+    border: none;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+#save_upload {
+    position: absolute;
+    bottom: 80px;
+    right: 50px;
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #00D775, #00BD68);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: 44px;
+    line-height: 44px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    z-index: 9;
+    border: 0;
+}
+
+#save_upload:hover {
+    background: #00bd68;
+}
+
+#Display_img {
+    width: 50%;
+    height: 400px;
+    position: absolute;
+    top: 100px;
+    left: 301px;
+    object-fit: scale-down;
+    padding: 30px;
+    border-radius: 10px;
 }
 
 /*  */
@@ -309,7 +620,8 @@ label:active:after {
 
     width: 100%;
 }
-.bottom_bar button{
+
+.bottom_bar button {
     border-radius: 5px;
 }
 
@@ -364,10 +676,11 @@ label:active:after {
     /* This bit sets up the horizontal layout */
 
     top: 50px;
-    left: 20px;
+    left: 120px;
     display: flex;
 
-    position: relative;
+
+    position: absolute;
     margin: 0 auto;
 
     flex-direction: row;
@@ -378,6 +691,14 @@ label:active:after {
 
     /* I've used padding so you can see the edges of the elements. */
     padding: 2px;
+}
+
+#add_bookmark {
+    background: none;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
 }
 
 .main {
@@ -421,9 +742,19 @@ label:active:after {
 
 /* Change elements if window size is reduced */
 @media screen and (max-width: 1360px) {
+    .Widgets {
+        width: 100%;
+        place-content: center;
+    }
+
+    .wrapper {
+        width: 100%;
+        place-items: center;
+    }
+
     #Form {
         width: 490px;
-        left: 100px;
+        left: 160px;
     }
 
     #suggestion_list {
@@ -433,6 +764,16 @@ label:active:after {
 }
 
 @media screen and (max-width: 1229px) {
+    .Widgets {
+        width: 100%;
+        place-content: center;
+    }
+
+    .wrapper {
+        width: 100%;
+        place-items: center;
+    }
+
     #Form {
 
         width: 430px;
@@ -444,13 +785,19 @@ label:active:after {
         left: 180px;
         width: 426px;
     }
+
 }
 
 /* if min width is 1072px then apply this css */
 @media screen and (max-width: 1122px) {
+    .Widgets {
+        width: 100%;
+        place-content: center;
+    }
+
     .wrapper {
         position: relative;
-
+        place-items: center;
         width: 100%;
         height: 100%;
         top: 200px;
@@ -458,7 +805,7 @@ label:active:after {
 
     #Form {
         top: 10px;
-        left: -150px;
+        left: 200px;
 
         width: 400px;
     }
@@ -475,13 +822,22 @@ label:active:after {
 
     }
 
+
 }
 
 @media screen and (max-width: 765px) {
-    #Form {
+    .Widgets {
+        width: 100%;
+        place-content: center;
+    }
 
-        top: 10px;
-        left: -80px;
+    .wrapper {
+        width: 100%;
+        right: 300px;
+        place-items: center;
+    }
+
+    #Form {
 
         width: 400px;
         height: 35px;
@@ -493,4 +849,18 @@ label:active:after {
         width: 396px;
     }
 
+}
+
+@media screen and (max-width: 665px) {
+    .Widgets {
+        width: 100%;
+        right: 100px;
+        place-content: center;
+    }
+
+    .wrapper {
+        width: 100%;
+        right: 480px;
+        place-items: center;
+    }
 }

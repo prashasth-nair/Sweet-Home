@@ -42,15 +42,22 @@
                         <button id="Search_button" type="button"><i
                                 class="fa-solid
                                 fa-magnifying-glass"></i></button>
+                        <button id="add_bookmark"><i class="fa-solid fa-plus"></i></button>
                     </form>
+
                     <div id="suggestion_list">
                         <ul id="list">
 
                         </ul>
                     </div>
                 </div>
+                <div class="bookmark">
+                    <div class="grid" id="bookmark_grid">
 
 
+                    </div>
+
+                </div>
 
             </div>
             <div class="bottom_bar">
@@ -66,6 +73,34 @@
             </div>
 
         </div>
+        <dialog class="Bookmark_window">
+            <div class="bookmark_header">
+                <h3 id="Bookmark_title">Create Bookmark</h3>
+                <button class="Close" id="bookmark_close">
+                    <i class="fa-solid fa-x"></i>
+                </button>
+
+            </div>
+            <div class="bookmark_main">
+                <div class="icon-field">
+                    
+                </div>
+                <div class="form-group">
+                    <input class="form-field" type="text" id='name_box'
+                        placeholder="Name">
+                </div>
+
+                <div class="form-group">
+                    <span>https://</span>
+                    <input class="form-field" type="text" id='url_box'
+                        placeholder="domain.tld">
+                </div>
+            </div>
+            <div class="bookmark_footer">
+                <button id="bookmark_save">Save</button>
+            </div>
+
+        </dialog>
         <dialog class="Settings_window">
             <h3 id="settings_title">Settings</h3>
             <div class="settings_sidebar">
@@ -106,16 +141,45 @@
 
         <dialog class="Wallpaper_window">
             <div class="wallpaper_header">
-                <button id="close">
+                <button class="Close" id="close">
                     <i class="fa-solid fa-x"></i>
                 </button>
-                
-            </div>
-            <div class="wallpaper_main" id="image_loc">
 
             </div>
+            <div class="wallpaper_main" id="masonryContainer">
+
+            </div>
+            <div class="wallpaper_upload" style="display: none;">
+                <div class="upload-btn-wrapper">
+                    <button class="btn">Upload a file</button>
+                    <input id="image-file" type="file" accept=".jpg,.png" />
+                </div>
+                <img id="Display_img" onerror="this.style.display='none'" />
+                <button id="save_upload">Apply Wallpaper</button>
+            </div>
+            <div class="wallpaper_bottom_bar">
+                <button id="Wallpaper_Home" autofocus>
+                    <i class="fa-solid fa-house"></i>
+                </button>
+                <button id="Wallpaper_user_upload">
+                    <i class="fa-solid fa-images"></i>
+                </button>
+            </div>
         </dialog>
+        <link rel="stylesheet" href="mosaic-styles.css" />
+        <script src="lazy-load-mosaic-tile-script.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.2/web-animations.min.js"
+            integrity="sha512-oAY57i8MXmaOP7pAylNLnULAM4QLV3uGnvnXVY4zF229/zFzTvG2/5YIgH8iN8oZR2hnbkiDPd4JCJGaH4oG6g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
+            integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
         <script src="main.js"></script>
+
     </body>
 
 </html>
