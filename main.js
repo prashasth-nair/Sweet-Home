@@ -33,10 +33,6 @@ var hour_format = localStorage.getItem('hour_format');
 var bgimage = localStorage.getItem('wallpaper_img');
 var columnGrids = [];
 let drag = false;
-if (bgimage != null) {
-    document.body.style.backgroundImage = "url(" + bgimage + ")";
-}
-
 const grid = new Muuri(".grid", {
     dragEnabled: true,
     layout: {
@@ -47,6 +43,31 @@ const grid = new Muuri(".grid", {
         rounding: true,
     },
 });
+if (bgimage != null) {
+    document.body.style.backgroundImage = "url(" + bgimage + ")";
+}
+if(localStorage.getItem('bookmarks') != null){
+    var bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+    for(var i = 0; i < bookmarks.length; i++){
+        var website_name = bookmarks[i].name;
+        var website_url = bookmarks[i].url;
+    
+        var item = document.createElement('div');
+        item.setAttribute('class', 'item');
+
+
+        var item_content = document.createElement('div');
+        item_content.setAttribute('class', 'item-content');
+        item_content.setAttribute('style', 'background:url(https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://' + website_url + '&size=128)  no-repeat; background-size:100% 100%');
+        item_content.setAttribute('id', website_url);
+
+        item.appendChild(item_content);
+        var label = document.createElement('label');
+        label.innerHTML = [website_name];
+        item_content.appendChild(label);
+        grid.add(item)
+      }
+}
 
 var wallpaper_lis = ["wallpapers\\Wallpaper.jpg", "wallpapers\\Wallpaper1.jpg", "wallpapers\\Wallpaper2.jpg", "wallpapers\\Wallpaper3.jpg"];
 var mosaic = new mosaicLayout({
@@ -62,7 +83,7 @@ General_tab.style.background = '#dbdbdb';
 bookmark_url_box.addEventListener('keydown', (e) => {
     if (bookmark_url_box.value.includes('.')) {
 
-        icon.style.background = "url(https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://" + bookmark_url_box.value + "&size=64)  no-repeat";
+        icon.style.background = "url(https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://" + bookmark_url_box.value + "&size=128)  no-repeat";
         icon.style.backgroundSize = "100% 100%";
     }
 })
@@ -70,6 +91,27 @@ bookmark_save.addEventListener('click', () => {
     if (bookmark_name_box.value != "" && bookmark_url_box.value != "") {
         var website_name = bookmark_name_box.value;
         var website_url = bookmark_url_box.value;
+        var bookmark = {
+            name: website_name,
+            url: website_url
+          }
+        
+        // Test if bookmarks is null
+          if(localStorage.getItem('bookmarks') === null){
+            // Init array
+            var bookmarks = [];
+            // Add to array
+            bookmarks.push(bookmark);
+            // Set to localStorage
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+          } else {
+            // Get bookmarks from localStorage
+            var bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+            // Add bookmark to array
+            bookmarks.push(bookmark);
+            // Re-set back to localStorage
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+          }
         if (!website_url.includes("https://")) {
             website_url = "https://" + website_url;
         }
@@ -79,7 +121,7 @@ bookmark_save.addEventListener('click', () => {
 
         var item_content = document.createElement('div');
         item_content.setAttribute('class', 'item-content');
-        item_content.setAttribute('style', 'background:url(https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://' + bookmark_url_box.value + '&size=64)  no-repeat; background-size:100% 100%');
+        item_content.setAttribute('style', 'background:url(https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://' + bookmark_url_box.value + '&size=128)  no-repeat; background-size:100% 100%');
         item_content.setAttribute('id', website_url);
 
         item.appendChild(item_content);
@@ -87,6 +129,8 @@ bookmark_save.addEventListener('click', () => {
         label.innerHTML = [website_name];
         item_content.appendChild(label);
         grid.add(item)
+        Bookmark_dialoge.close();
+    
     }
 })
 document.getElementById('bookmark_grid').addEventListener(

@@ -4,5 +4,8 @@
     "manifest_version": 3,
     "chrome_url_overrides": {
         "newtab": "main.html"
-    }
+    },
+    "permissions": [
+        "bookmarks"
+      ]
 }
