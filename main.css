@@ -52,7 +52,8 @@ input:focus {
     padding: 10px;
 
 }
-.icon-field{
+
+.icon-field {
     position: absolute;
     width: 55px;
     height: 55px;
@@ -60,6 +61,7 @@ input:focus {
     border-radius: 16px;
     background: #59687d;
 }
+
 :root {
 
     --input-color: #99A3BA;
@@ -207,7 +209,28 @@ input:focus {
     text-align: center;
 }
 
+/*  */
+#context-menu {
+    background-color: #ffffff;
+    color: #1f194c;
+    width: 10em;
+    padding: 0.8em 0.6em;
+    font-size: 1.3rem;
+    position: fixed;
+    visibility: hidden;
+    z-index: 10;
+}
 
+.menu_item {
+    padding: 0.3em 1.2em;
+}
+
+.menu_item:hover {
+    background-color: rgba(44, 141, 247, 0.2);
+    cursor: pointer;
+}
+
+/*  */
 
 .item-content label {
     position: relative;
