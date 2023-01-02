@@ -213,11 +213,13 @@ input:focus {
 #context-menu {
     background-color: #ffffff;
     color: #1f194c;
-    width: 10em;
-    padding: 0.8em 0.6em;
-    font-size: 1.3rem;
+    width: 200px;
+    padding: 0px;
+    font-size: 16px;
     position: fixed;
     visibility: hidden;
+    border-radius: 20px 20px 20px 20px;
+    border: 1px;
     z-index: 10;
 }
 
@@ -226,7 +228,8 @@ input:focus {
 }
 
 .menu_item:hover {
-    background-color: rgba(44, 141, 247, 0.2);
+    background-color: #20a0ff;
+    color: white;
     cursor: pointer;
 }
 

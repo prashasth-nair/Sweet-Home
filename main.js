@@ -54,6 +54,7 @@ var timeout;
 var lastTap = 0;
 //refer menu div
 let contextMenu = document.getElementById("context-menu");
+var element_id=null;
 
 
 //for double tap(works on touch devices)
@@ -96,8 +97,7 @@ if (localStorage.getItem('bookmarks') != null) {
     for (var i = 0; i < bookmarks.length; i++) {
         var website_name = bookmarks[i].name;
         var website_url = bookmarks[i].url;
-        console.log('url', website_url);
-
+        
         var item = document.createElement('div');
         item.setAttribute('class', 'item');
 
@@ -119,6 +119,7 @@ if (localStorage.getItem('bookmarks') != null) {
     document.getElementById('bookmark_grid').addEventListener('contextmenu', (e) => {
         if (e.target.id != 'bookmark_grid') {
             e.preventDefault();
+            element_id=e.target.id;
             //x and y position of mouse or touch
             let mouseX = e.clientX || e.touches[0].clientX;
             let mouseY = e.clientY || e.touches[0].clientY;
@@ -160,6 +161,18 @@ if (localStorage.getItem('bookmarks') != null) {
 
 
 }
+document.getElementById('delete_bookmark').addEventListener('click',(e)=>{
+    document.getElementById(element_id).remove();
+    if(contextMenu.style.visibility == "visible"){
+        contextMenu.style.visibility = "hidden";
+    }
+    var json = JSON.parse(localStorage.getItem('bookmarks'));
+    var index = json.findIndex(json => json.url==element_id);
+    let json_delete = json.filter(json => json.url !== element_id);
+   
+    grid.remove(grid.getItems(index), { removeElements: true });
+    localStorage.setItem('bookmarks', JSON.stringify(json_delete));
+});
 
 var wallpaper_lis = ["wallpapers\\Wallpaper.jpg", "wallpapers\\Wallpaper1.jpg", "wallpapers\\Wallpaper2.jpg", "wallpapers\\Wallpaper3.jpg"];
 var mosaic = new mosaicLayout({
@@ -297,7 +310,6 @@ else {
 
 // Click events
 document.getElementById("Search_button").addEventListener("click", Click);
-
 
 settings_button.addEventListener("click", () => {
     settings_dialoge.showModal();
