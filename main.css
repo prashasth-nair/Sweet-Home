@@ -251,6 +251,12 @@ input:focus {
 
 /*  */
 
+.delete_bookmark_dialog{
+    width: 350px;
+    height: 100px;
+    z-index: 20;
+}
+
 /* Settings */
 /* -------------------------------------------- */
 .Settings_window {

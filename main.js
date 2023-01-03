@@ -5,6 +5,7 @@ const Wallpaper_dialoge = document.querySelector('.Wallpaper_window');
 const Wallpaper_main = document.querySelector('.wallpaper_main');
 const Wallpaper_upload = document.querySelector('.wallpaper_upload');
 const Bookmark_dialoge = document.querySelector('.Bookmark_window');
+const Bookmark_delete_dialoge = document.querySelector('.delete_bookmark_dialog');
 const Wallpaper_close = document.querySelector('#close');
 const Bookmark_close = document.querySelector('#bookmark_close');
 const search_box = document.querySelector('#Text');
@@ -162,16 +163,29 @@ if (localStorage.getItem('bookmarks') != null) {
 
 }
 document.getElementById('delete_bookmark').addEventListener('click',(e)=>{
-    document.getElementById(element_id).remove();
     if(contextMenu.style.visibility == "visible"){
         contextMenu.style.visibility = "hidden";
     }
+    Bookmark_delete_dialoge.show();
+    document.getElementById('delete_close').addEventListener('click',()=>{
+        Bookmark_delete_dialoge.close();
+    })
+    document.getElementById('delete_cancel').addEventListener('click',()=>{
+        Bookmark_delete_dialoge.close();
+    })
+    document.getElementById('delete_confirm').addEventListener('click',()=>{
+     document.getElementById(element_id).remove();
+    
     var json = JSON.parse(localStorage.getItem('bookmarks'));
     var index = json.findIndex(json => json.url==element_id);
     let json_delete = json.filter(json => json.url !== element_id);
    
     grid.remove(grid.getItems(index), { removeElements: true });
     localStorage.setItem('bookmarks', JSON.stringify(json_delete));
+    Bookmark_delete_dialoge.close();
+    })
+
+ 
 });
 
 var wallpaper_lis = ["wallpapers\\Wallpaper.jpg", "wallpapers\\Wallpaper1.jpg", "wallpapers\\Wallpaper2.jpg", "wallpapers\\Wallpaper3.jpg"];
