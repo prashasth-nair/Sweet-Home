@@ -55,7 +55,7 @@ var timeout;
 var lastTap = 0;
 //refer menu div
 let contextMenu = document.getElementById("context-menu");
-var element_id=null;
+var element_id = null;
 
 
 //for double tap(works on touch devices)
@@ -98,7 +98,7 @@ if (localStorage.getItem('bookmarks') != null) {
     for (var i = 0; i < bookmarks.length; i++) {
         var website_name = bookmarks[i].name;
         var website_url = bookmarks[i].url;
-        
+
         var item = document.createElement('div');
         item.setAttribute('class', 'item');
 
@@ -120,7 +120,7 @@ if (localStorage.getItem('bookmarks') != null) {
     document.getElementById('bookmark_grid').addEventListener('contextmenu', (e) => {
         if (e.target.id != 'bookmark_grid') {
             e.preventDefault();
-            element_id=e.target.id;
+            element_id = e.target.id;
             //x and y position of mouse or touch
             let mouseX = e.clientX || e.touches[0].clientX;
             let mouseY = e.clientY || e.touches[0].clientY;
@@ -162,30 +162,41 @@ if (localStorage.getItem('bookmarks') != null) {
 
 
 }
-document.getElementById('delete_bookmark').addEventListener('click',(e)=>{
-    if(contextMenu.style.visibility == "visible"){
+document.getElementById('delete_bookmark').addEventListener('click', (e) => {
+    if (contextMenu.style.visibility == "visible") {
         contextMenu.style.visibility = "hidden";
     }
+ 
+    var json = JSON.parse(localStorage.getItem('bookmarks'));    
+    var index = json.findIndex(json => json.url == element_id);
+
+    var item = document.createElement('div');
+    item.setAttribute('id', 'delete_text');
+    var label = document.createElement('label');
+    label.innerHTML = ["Are you sure you want to delete "+json[index]['name']+" bookmark?"];
+    item.appendChild(label);
+    Bookmark_delete_dialoge.appendChild(item);
     Bookmark_delete_dialoge.show();
-    document.getElementById('delete_close').addEventListener('click',()=>{
+
+    document.getElementById('delete_close').addEventListener('click', () => {
         Bookmark_delete_dialoge.close();
     })
-    document.getElementById('delete_cancel').addEventListener('click',()=>{
+    document.getElementById('delete_cancel').addEventListener('click', () => {
         Bookmark_delete_dialoge.close();
     })
-    document.getElementById('delete_confirm').addEventListener('click',()=>{
-     document.getElementById(element_id).remove();
-    
-    var json = JSON.parse(localStorage.getItem('bookmarks'));
-    var index = json.findIndex(json => json.url==element_id);
-    let json_delete = json.filter(json => json.url !== element_id);
-   
-    grid.remove(grid.getItems(index), { removeElements: true });
-    localStorage.setItem('bookmarks', JSON.stringify(json_delete));
-    Bookmark_delete_dialoge.close();
+    document.getElementById('delete_confirm').addEventListener('click', () => {
+        document.getElementById(element_id).remove();
+
+
+
+        let json_delete = json.filter(json => json.url !== element_id);
+
+        grid.remove(grid.getItems(index), { removeElements: true });
+        localStorage.setItem('bookmarks', JSON.stringify(json_delete));
+        Bookmark_delete_dialoge.close();
     })
 
- 
+
 });
 
 var wallpaper_lis = ["wallpapers\\Wallpaper.jpg", "wallpapers\\Wallpaper1.jpg", "wallpapers\\Wallpaper2.jpg", "wallpapers\\Wallpaper3.jpg"];
