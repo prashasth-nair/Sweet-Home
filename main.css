@@ -1,5 +1,6 @@
 body {
-    /* background-image: url('wallpapers\\Wallpaper.jpg'); */
+    width: 100%;
+    height: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -13,6 +14,13 @@ dialog {
     border-radius: 10px;
 }
 
+dialog::backdrop {
+    backdrop-filter: blur(10px);
+}
+
+.blur {
+    filter: blur(5px);
+}
 #Text {
     padding-right: 10px;
     padding-left: 10px;
@@ -248,13 +256,15 @@ input:focus {
     height: 170px;
     z-index: 20;
 }
-#delete_text{
+
+#delete_text {
     text-align: center;
     position: absolute;
     top: 80px;
     font-size: 18px;
 }
-.delte_dialoge_button{
+
+.delte_dialoge_button {
     position: absolute;
     bottom: 0px;
     right: 0px;
@@ -290,9 +300,7 @@ input:focus {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
-dialog::backdrop {
-    background: rgb(0 0 0 / .6);
-}
+
 
 .dialogue_button {
     width: 100%;
@@ -501,21 +509,22 @@ input[type=checkbox] {
     width: 1260px;
     height: 600px;
     overflow-x: hidden;
+    padding: 10px;
 
 }
 
 .wallpaper_bottom_bar {
     position: absolute;
     display: grid;
-    width: 1250px;
+    width: 1260px;
+    padding: 10px;
     grid-template-columns: 1fr 1fr;
     column-gap: 50px;
-    padding-left: 20px;
-    padding-bottom: 10px;
-    padding-top: 10px;
     place-items: center;
     background-color: #eef7fe;
-    bottom: 0px;
+    margin-bottom: 0px;
+    bottom: 0;
+    
 }
 
 .wallpaper_bottom_bar button {
@@ -562,6 +571,9 @@ input[type=checkbox] {
 
 .Close:hover {
     background-color: #ebebeb;
+}
+.Close:focus {
+    outline: none;
 }
 
 .Images {
@@ -650,6 +662,7 @@ input[type=checkbox] {
     display: flex;
     flex-wrap: wrap;
     backdrop-filter: blur(10px);
+    z-index: 50;
 
     width: 100%;
 }

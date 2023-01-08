@@ -1,24 +1,27 @@
 
 // Variables
 const settings_dialoge = document.querySelector('.Settings_window');
+const settings_cancel_button = document.querySelector('#settings_cancel');
+const settings_save_button = document.querySelector('#settings_save');
+const settings_button = document.querySelector('#settings');
+
 const Wallpaper_dialoge = document.querySelector('.Wallpaper_window');
 const Wallpaper_main = document.querySelector('.wallpaper_main');
 const Wallpaper_upload = document.querySelector('.wallpaper_upload');
+const Wallpaper_close = document.querySelector('#close');
+const wallpaper_button = document.querySelector('#wallpaper');
+const Wallpaper_upload_button = document.querySelector('#Wallpaper_user_upload');
+const Wallpaper_Home_button = document.querySelector('#Wallpaper_Home');
+
 const Bookmark_dialoge = document.querySelector('.Bookmark_window');
 const Bookmark_delete_dialoge = document.querySelector('.delete_bookmark_dialog');
-const Wallpaper_close = document.querySelector('#close');
 const Bookmark_close = document.querySelector('#bookmark_close');
-const search_box = document.querySelector('#Text');
-const settings_button = document.querySelector('#settings');
 const bookmark_button = document.querySelector('#add_bookmark');
 const bookmark_save = document.querySelector('#bookmark_save');
 const bookmark_name_box = document.querySelector('#name_box');
 const bookmark_url_box = document.querySelector('#url_box');
-const wallpaper_button = document.querySelector('#wallpaper');
-const settings_cancel_button = document.querySelector('#settings_cancel');
-const settings_save_button = document.querySelector('#settings_save');
-const Wallpaper_upload_button = document.querySelector('#Wallpaper_user_upload');
-const Wallpaper_Home_button = document.querySelector('#Wallpaper_Home');
+
+const search_box = document.querySelector('#Text');
 const quotes = document.querySelector('#quotes');
 const icon = document.querySelector('.icon-field');
 
@@ -33,7 +36,9 @@ var new_tab_isChecked = localStorage.getItem('new_tab_isChecked');
 var hour_format = localStorage.getItem('hour_format');
 var bgimage = localStorage.getItem('wallpaper_img');
 var columnGrids = [];
+
 let drag = false;
+
 const grid = new Muuri(".grid", {
     dragEnabled: true,
     layout: {
@@ -46,7 +51,100 @@ const grid = new Muuri(".grid", {
 });
 
 
-// 
+
+
+// wallpaper
+if (bgimage != null) {
+    document.body.style.backgroundImage = "url(" + bgimage + ")";
+}
+
+var wallpaper_lis = ["wallpapers\\Wallpaper.jpg", "wallpapers\\Wallpaper1.jpg", "wallpapers\\Wallpaper2.jpg", "wallpapers\\Wallpaper3.jpg"];
+var mosaic = new mosaicLayout({
+    imagesArray: wallpaper_lis,
+    lazyLoading: true,
+    columns: 3,
+});
+mosaic.initiate();
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById('Display_img').setAttribute('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+Wallpaper_upload_button.addEventListener('click', () => {
+    Wallpaper_main.style.display = 'none';
+    Wallpaper_upload.style.display = 'block';
+
+})
+Wallpaper_Home_button.addEventListener('click', () => {
+    Wallpaper_main.style.display = 'flex';
+    Wallpaper_upload.style.display = 'none';
+})
+document.getElementById('save_upload').addEventListener('click', () => {
+    const reader = new FileReader();
+
+    let files = document.getElementById('image-file').files
+    reader.onload = async (event) => {
+        document.body.style.backgroundImage = "url(" + event.target.result + ")";
+        localStorage.setItem("wallpaper_img", event.target.result);
+    }
+    reader.readAsDataURL(files[0])
+
+})
+document.getElementById('image-file').addEventListener('change', (event) => {
+    readURL(document.getElementById('image-file'));
+})
+document.getElementById('masonryContainer').addEventListener('click', (e) => {
+    var bgimage = document.getElementById(e.target.id).src;
+    if(bgimage){
+    document.body.style.backgroundImage = "url(" + bgimage + ")";
+    localStorage.setItem("wallpaper_img", bgimage);
+    console.log('id',bgimage    )
+    }
+})
+mosaic.loadImages();
+
+wallpaper_button.addEventListener("click", () => {
+    
+    Wallpaper_dialoge.showModal();
+
+});
+Wallpaper_close.addEventListener("click", () => {
+    Wallpaper_dialoge.close();
+});
+
+// Bookmark
+// Inserting bookmarks in grid from storage
+if (localStorage.getItem('bookmarks') != null) {
+    var bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+    for (var i = 0; i < bookmarks.length; i++) {
+        var website_name = bookmarks[i].name;
+        var website_url = bookmarks[i].url;
+
+        var item = document.createElement('div');
+        item.setAttribute('class', 'item');
+
+
+        var item_content = document.createElement('div');
+        item_content.setAttribute('class', 'item-content');
+        item_content.setAttribute('style', 'background:url(https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://' + website_url + '&size=128)  no-repeat; background-size:100% 100%');
+        item_content.setAttribute('id', website_url);
+
+        item.appendChild(item_content);
+        var label = document.createElement('label');
+        label.innerHTML = [website_name];
+        item_content.appendChild(label);
+        grid.add(item)
+    }
+}
+
+// Right click event
 //Events for desktop and touch
 let events = ["contextmenu", "touchstart"];
 //initial declaration
@@ -88,33 +186,6 @@ document.addEventListener("click", function (e) {
     }
 });
 
-// 
-
-if (bgimage != null) {
-    document.body.style.backgroundImage = "url(" + bgimage + ")";
-}
-if (localStorage.getItem('bookmarks') != null) {
-    var bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
-    for (var i = 0; i < bookmarks.length; i++) {
-        var website_name = bookmarks[i].name;
-        var website_url = bookmarks[i].url;
-
-        var item = document.createElement('div');
-        item.setAttribute('class', 'item');
-
-
-        var item_content = document.createElement('div');
-        item_content.setAttribute('class', 'item-content');
-        item_content.setAttribute('style', 'background:url(https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://' + website_url + '&size=128)  no-repeat; background-size:100% 100%');
-        item_content.setAttribute('id', website_url);
-
-        item.appendChild(item_content);
-        var label = document.createElement('label');
-        label.innerHTML = [website_name];
-        item_content.appendChild(label);
-        grid.add(item)
-    }
-}
 //same function for both events
 if (localStorage.getItem('bookmarks') != null) {
     document.getElementById('bookmark_grid').addEventListener('contextmenu', (e) => {
@@ -162,18 +233,20 @@ if (localStorage.getItem('bookmarks') != null) {
 
 
 }
+
+// Delete bookmark
 document.getElementById('delete_bookmark').addEventListener('click', (e) => {
     if (contextMenu.style.visibility == "visible") {
         contextMenu.style.visibility = "hidden";
     }
- 
-    var json = JSON.parse(localStorage.getItem('bookmarks'));    
+
+    var json = JSON.parse(localStorage.getItem('bookmarks'));
     var index = json.findIndex(json => json.url == element_id);
 
     var item = document.createElement('div');
     item.setAttribute('id', 'delete_text');
     var label = document.createElement('label');
-    label.innerHTML = ["Are you sure you want to delete "+json[index]['name']+" bookmark?"];
+    label.innerHTML = ["Are you sure you want to delete " + json[index]['name'] + " bookmark?"];
     item.appendChild(label);
     Bookmark_delete_dialoge.appendChild(item);
     Bookmark_delete_dialoge.show();
@@ -187,29 +260,15 @@ document.getElementById('delete_bookmark').addEventListener('click', (e) => {
     document.getElementById('delete_confirm').addEventListener('click', () => {
         document.getElementById(element_id).remove();
 
-
-
         let json_delete = json.filter(json => json.url !== element_id);
 
         grid.remove(grid.getItems(index), { removeElements: true });
         localStorage.setItem('bookmarks', JSON.stringify(json_delete));
         Bookmark_delete_dialoge.close();
     })
-
-
 });
 
-var wallpaper_lis = ["wallpapers\\Wallpaper.jpg", "wallpapers\\Wallpaper1.jpg", "wallpapers\\Wallpaper2.jpg", "wallpapers\\Wallpaper3.jpg"];
-var mosaic = new mosaicLayout({
-    imagesArray: wallpaper_lis,
-    lazyLoading: true,
-    columns: 3,
-});
-mosaic.initiate();
 
-var url = "https://api.quotable.io/random";
-
-General_tab.style.background = '#dbdbdb';
 bookmark_url_box.addEventListener('keydown', (e) => {
     if (bookmark_url_box.value.includes('.')) {
 
@@ -271,52 +330,31 @@ document.getElementById('bookmark_grid').addEventListener(
 document.getElementById('bookmark_grid').addEventListener('click', (e) => {
     if (!drag) {
         var url = e.target.id;
+        if(url!='bookmark_grid'){
         if (!url.includes("https://") && !url.includes("http://")) {
             url = "https://" + url;
         }
 
         window.open(url, "_self");//opens page
     }
-})
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            document.getElementById('Display_img').setAttribute('src', e.target.result);
-        };
-
-        reader.readAsDataURL(input.files[0]);
     }
-}
-Wallpaper_upload_button.addEventListener('click', () => {
-    Wallpaper_main.style.display = 'none';
-    Wallpaper_upload.style.display = 'block';
+})
 
-})
-Wallpaper_Home_button.addEventListener('click', () => {
-    Wallpaper_main.style.display = 'flex';
-    Wallpaper_upload.style.display = 'none';
-})
-document.getElementById('save_upload').addEventListener('click', () => {
-    const reader = new FileReader();
+bookmark_button.addEventListener("click", () => {
 
-    let files = document.getElementById('image-file').files
-    reader.onload = async (event) => {
-        document.body.style.backgroundImage = "url(" + event.target.result + ")";
-        localStorage.setItem("wallpaper_img", event.target.result);
-    }
-    reader.readAsDataURL(files[0])
+    Bookmark_dialoge.showModal();
 
-})
-document.getElementById('image-file').addEventListener('change', (event) => {
-    readURL(document.getElementById('image-file'));
-})
-document.getElementById('masonryContainer').addEventListener('click', (e) => {
-    var bgimage = document.getElementById(e.target.id).src;
-    document.body.style.backgroundImage = "url(" + bgimage + ")";
-    localStorage.setItem("wallpaper_img", bgimage);
-})
+});
+Bookmark_close.addEventListener("click", () => {
+    Bookmark_dialoge.close();
+});
+
+// End Bookmark
+
+
+var url = "https://api.quotable.io/random";
+
+
 
 async function fetchDataAsync(url) {
     const response = await fetch(url);
@@ -326,39 +364,27 @@ async function fetchDataAsync(url) {
 }
 fetchDataAsync(url);
 
+// Settings
+
+General_tab.style.background = '#dbdbdb';
 if (new_tab_isChecked === 'true') {
     document.getElementById("switch").checked = true;
 }
 else {
     document.getElementById("switch").checked = false;
 }
+settings_button.addEventListener("click", () => {
+    settings_dialoge.showModal();
+});
 
 // Click events
 document.getElementById("Search_button").addEventListener("click", Click);
 
-settings_button.addEventListener("click", () => {
-    settings_dialoge.showModal();
-});
-bookmark_button.addEventListener("click", () => {
-
-    Bookmark_dialoge.showModal();
-
-});
-
-wallpaper_button.addEventListener("click", () => {
-    mosaic.loadImages();
-    Wallpaper_dialoge.showModal();
-
-});
 settings_cancel_button.addEventListener("click", () => {
     settings_dialoge.close();
 });
-Wallpaper_close.addEventListener("click", () => {
-    Wallpaper_dialoge.close();
-});
-Bookmark_close.addEventListener("click", () => {
-    Bookmark_dialoge.close();
-});
+
+
 settings_save_button.addEventListener("click", () => {
     hour_format = document.getElementById('hour').value;
     new_tab_isChecked = document.getElementById('switch').checked;
