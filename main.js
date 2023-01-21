@@ -102,16 +102,16 @@ document.getElementById('image-file').addEventListener('change', (event) => {
 })
 document.getElementById('masonryContainer').addEventListener('click', (e) => {
     var bgimage = document.getElementById(e.target.id).src;
-    if(bgimage){
-    document.body.style.backgroundImage = "url(" + bgimage + ")";
-    localStorage.setItem("wallpaper_img", bgimage);
-    console.log('id',bgimage    )
+    if (bgimage) {
+        document.body.style.backgroundImage = "url(" + bgimage + ")";
+        localStorage.setItem("wallpaper_img", bgimage);
+        console.log('id', bgimage)
     }
 })
 mosaic.loadImages();
 
 wallpaper_button.addEventListener("click", () => {
-    
+
     Wallpaper_dialoge.showModal();
 
 });
@@ -234,6 +234,11 @@ if (localStorage.getItem('bookmarks') != null) {
 
 }
 
+document.getElementById('open_in_new_tab').addEventListener('click', (e) => {
+
+    window.open("https://www."+element_id);
+});
+
 // Delete bookmark
 document.getElementById('delete_bookmark').addEventListener('click', (e) => {
     if (contextMenu.style.visibility == "visible") {
@@ -330,13 +335,13 @@ document.getElementById('bookmark_grid').addEventListener(
 document.getElementById('bookmark_grid').addEventListener('click', (e) => {
     if (!drag) {
         var url = e.target.id;
-        if(url!='bookmark_grid'){
-        if (!url.includes("https://") && !url.includes("http://")) {
-            url = "https://" + url;
-        }
+        if (url != 'bookmark_grid') {
+            if (!url.includes("https://") && !url.includes("http://")) {
+                url = "https://" + url;
+            }
 
-        window.open(url, "_self");//opens page
-    }
+            window.open(url, "_self");//opens page
+        }
     }
 })
 
