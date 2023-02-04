@@ -3,7 +3,8 @@
 <p align="center">
   <img src="src/homes.png" alt="your-image-description" style="width: 15%;">
 </p>
-# Sweet Home
+
+## Sweet-Home
 
 Transform your New Tab page into a personalized and visually appealing hub with Sweet Home. Say goodbye to the plain and boring default New Tab and welcome a cleaner, more organized look.
 
