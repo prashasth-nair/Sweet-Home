@@ -6,6 +6,10 @@
         "newtab": "main.html"
     },
     "permissions": [
-        "bookmarks"
-      ]
+        "bookmarks",
+        "scripting"
+    ],
+    "description": "Sweet Home",
+    "short_name": "Sweet Home"
+  
 }

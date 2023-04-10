@@ -14,7 +14,7 @@ const Wallpaper_upload_button = document.querySelector('#Wallpaper_user_upload')
 const Wallpaper_Home_button = document.querySelector('#Wallpaper_Home');
 
 const Bookmark_dialoge = document.querySelector('.Bookmark_window');
-const Bookmark_delete_dialoge = document.querySelector('.delete_bookmark_dialog');
+
 const Bookmark_close = document.querySelector('#bookmark_close');
 const bookmark_button = document.querySelector('#add_bookmark');
 const bookmark_save = document.querySelector('#bookmark_save');
@@ -30,7 +30,7 @@ const Search_tab = document.querySelector('#Search_tab');
 
 const General_screen = document.querySelector('.General');
 const Search_screen = document.querySelector('.Search');
-
+var Bookmark_delete_dialoge = document.querySelector('.delete_bookmark_dialog');
 var new_tab_isChecked = localStorage.getItem('new_tab_isChecked');
 
 var hour_format = localStorage.getItem('hour_format');
@@ -50,12 +50,11 @@ const grid = new Muuri(".grid", {
     },
 });
 
-
-
-
 // wallpaper
 if (bgimage != null) {
     document.body.style.backgroundImage = "url(" + bgimage + ")";
+}else{
+    document.body.style.backgroundImage = "url('wallpapers/Wallpaper.jpg')";
 }
 
 var wallpaper_lis = ["wallpapers\\Wallpaper.jpg", "wallpapers\\Wallpaper1.jpg", "wallpapers\\Wallpaper2.jpg", "wallpapers\\Wallpaper3.jpg"];
@@ -183,6 +182,8 @@ document.addEventListener("touchend", function (e) {
 document.addEventListener("click", function (e) {
     if (!contextMenu.contains(e.target)) {
         contextMenu.style.visibility = "hidden";
+    }else{
+        contextMenu.style.visibility = "visible";
     }
 });
 
@@ -244,9 +245,15 @@ document.getElementById('delete_bookmark').addEventListener('click', (e) => {
     if (contextMenu.style.visibility == "visible") {
         contextMenu.style.visibility = "hidden";
     }
+    
 
     var json = JSON.parse(localStorage.getItem('bookmarks'));
     var index = json.findIndex(json => json.url == element_id);
+
+    if (index == -1) {
+        alert("Bookmark not found in JSON array");
+        return;
+    }
 
     var item = document.createElement('div');
     item.setAttribute('id', 'delete_text');
@@ -323,10 +330,18 @@ bookmark_save.addEventListener('click', () => {
         label.innerHTML = [website_name];
         item_content.appendChild(label);
         grid.add(item)
-        Bookmark_dialoge.close();
+        closeDialog();
 
     }
 })
+
+function closeDialog() {
+    // Clear the text field
+    document.getElementById("name_box").value = "";
+    document.getElementById("url_box").value = "";
+    // Hide the dialog
+    Bookmark_dialoge.close();
+  }
 document.getElementById('bookmark_grid').addEventListener(
     'mousedown', () => drag = false);
 
@@ -351,7 +366,7 @@ bookmark_button.addEventListener("click", () => {
 
 });
 Bookmark_close.addEventListener("click", () => {
-    Bookmark_dialoge.close();
+    closeDialog();
 });
 
 // End Bookmark
@@ -545,10 +560,10 @@ document.getElementById('Form').onsubmit = function () {
 //     // }
 // }
 
-document.querySelector("#list").addEventListener('click', (e) => {
-    search_box.value = document.getElementById(e.target.id).innerHTML;
-    Click()
-})
+// document.querySelector("#list").addEventListener('click', (e) => {
+//     search_box.value = document.getElementById(e.target.id).innerHTML;
+//     Click()
+// })
 
 // function renderSuggestionList(element, n) {
 //     var li = document.createElement('li');

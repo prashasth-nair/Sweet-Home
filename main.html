@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="main.css">
+        
+        <title>Home</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdnjs.cloudflare.com/ https://api.quotable.io/ https://t2.gstatic.com/; script-src 'self' https://cdnjs.cloudflare.com/ ; style-src 'self' https://cdnjs.cloudflare.com/ 'unsafe-inline' ; font-src 'self' https://cdnjs.cloudflare.com/ ;">
         <link rel="stylesheet" type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+        <link rel="stylesheet" href="main.css">
     </head>
 
     <body>
@@ -43,22 +45,20 @@
                                 class="fa-solid
                                 fa-magnifying-glass"></i></button>
                         <button id="add_bookmark"><i class="fa-solid fa-plus"></i></button>
+                        
                     </form>
+                    <div class="bookmark">
+                        <div class="grid" id="bookmark_grid"></div>
+    
+                    </div>
 
-                    <div id="suggestion_list">
+                    <!-- <div id="suggestion_list">
                         <ul id="list">
 
-                        </ul>
+                        </ul> -->
                     </div>
+                    
                 </div>
-                <div class="bookmark">
-                    <div class="grid" id="bookmark_grid">
-
-
-                    </div>
-
-                </div>
-
             </div>
 
             <div class="bottom_bar">
@@ -188,16 +188,19 @@
         </div>
         <link rel="stylesheet" href="mosaic-styles.css" />
         <script src="lazy-load-mosaic-tile-script.js"></script>
-        <script
+        <script src="resource/web-animations.js"></script>
+        <script src="resource/hammer.js"></script>
+        <script src="resource/murri.js"></script>
+        <!-- <script
             src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.2/web-animations.min.js"
             integrity="sha512-oAY57i8MXmaOP7pAylNLnULAM4QLV3uGnvnXVY4zF229/zFzTvG2/5YIgH8iN8oZR2hnbkiDPd4JCJGaH4oG6g=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            ></script>
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
             integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script
-            src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
+            src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script> -->
         <script src="main.js"></script>
 
     </body>
