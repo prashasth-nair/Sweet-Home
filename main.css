@@ -173,11 +173,18 @@ input:focus {
 }
 
 .bookmark {
-    /* position:absolute; */
-    /* display: grid; */
-    /* gap: 100px; */
-    /* left: 0px;    */
-}
+    
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    /* Adjust the left value based on your layout */
+    left: -27vw;
+    /* Translate the bookmark widget 50% of its own width to the left */
+    transform: translateX(-50%);
+    /* Add a margin to create space between the search bar and bookmark widget */
+  
+   
+  }
 
 .item {
     display: block;
@@ -471,7 +478,9 @@ input[type=checkbox] {
     right: 200px;
     height: 100%;
     width: 100%;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #time {
@@ -719,7 +728,7 @@ input[type=checkbox] {
 
 .quotes_widgets {
     position: fixed;
-    width: 500px;
+    width: 400px;
     top: 150px;
 }
 
@@ -737,9 +746,10 @@ input[type=checkbox] {
     /* This bit sets up the horizontal layout */
     position: absolute;
     top: 50px;
-    left: 120px;
+    left: 10%;
     display: flex;
     margin: 0 auto;
+
 
     flex-direction: row;
     width: 40vw;
@@ -797,56 +807,20 @@ input[type=checkbox] {
 #suggestion_list ul li:hover {
     background-color: #ebebeb;
 }
-
-/* Change elements if window size is reduced */
-@media screen and (max-width: 1360px) {
-    .Widgets {
-        width: 100%;
-        place-content: center;
-    }
-
-    .wrapper {
-        width: 100%;
-        place-items: center;
-    }
-
-    #suggestion_list {
-        width: 486px;
-        left: 100px;
-    }
-    .grid{
-        width: 550px;
-    }
-}
-
-@media screen and (max-width: 1229px) {
-
-    .wrapper {
-        width: 100%;
-        place-items: center;
-        display: flex;
-    }
-
-    .grid{
-        width: 450px;
-    }
-
-    #suggestion_list {
-        left: 180px;
-        width: 426px;
-    }
-
-}
-
 /* if min width is 1072px then apply this css */
 @media screen and (max-width: 1122px) {
 
-    .wrapper {
-        position: absolute;
-        place-items: center;
-        right: 50px;
-        top: 200px;
-    }
+/* Center the search form */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    top:200px;
+    right:400px;
+}
+
+
     .grid{
         width: 350px;
     }
@@ -862,42 +836,4 @@ input[type=checkbox] {
         display: none;
     }
 
-}
-
-@media screen and (max-width: 765px) {
-    .wrapper {
-        place-items: center;
-    }
-
-    #suggestion_list {
-        top: 8px;
-        left: -80px;
-        width: 396px;
-    }
- 
-
-}
-
-@media screen and (max-width: 665px) {
-    .Widgets {
-
-        right: 100px;
-        
-    }
-
-    .wrapper {
-        /* width: 100%; */
-        /* right: 480px; */
-        display: flex;
-        justify-items: center;
-        padding: 0px;
-
-        /* place-items: center; */
-        position: absolute;
-        left:  0px;
-    }
-
-    #Form{
-        width: 60vw;
-    }
 }
