@@ -1,0 +1,151 @@
+/* Wallpaper Dialoge box */
+.Wallpaper_window {
+    width: 1260px;
+    height: 600px;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.wallpaper_bottom_bar {
+    position: -webkit-sticky; /* Safari */
+    position:sticky;
+    top: 100vh;
+    display: grid;
+    width: 100vw;
+    padding: 10px;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(255, 255, 255);
+}
+
+.wallpaper_bottom_bar button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    width: 10vw;
+    color: black;
+    outline: none;
+    cursor: pointer;
+    margin-left: 200px;
+}
+
+.wallpaper_bottom_bar button:hover {
+    color: #42a5f5;
+}
+
+.wallpaper_main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wallpaper_header {
+    width: 100%;
+    height: 40px;
+}
+
+.wallpaper_main img{
+    border-radius: 20px;
+}
+
+.Close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.Close:hover {
+    background-color: #ebebeb;
+}
+
+.Close:focus {
+    outline: none;
+}
+
+.Images {
+    width: 400px;
+    height: 200px;
+    padding: 2px;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn {
+    display: inline-block;
+    margin-right: 10px;
+    background: #339DFF;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 38px;
+    border-radius: 50px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 170px;
+    text-align: center;
+    border: none;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+#save_upload {
+    position: absolute;
+    bottom: 80px;
+    right: 50px;
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #00D775, #00BD68);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: 44px;
+    line-height: 44px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    z-index: 9;
+    border: 0;
+}
+
+#save_upload:hover {
+    background: #00bd68;
+}
+
+#Display_img {
+    width: 50%;
+    height: 400px;
+    position: absolute;
+    top: 100px;
+    left: 301px;
+    object-fit: scale-down;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/*  */

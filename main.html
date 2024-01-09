@@ -1,175 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Home</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdnjs.cloudflare.com/ https://api.quotable.io/ https://t2.gstatic.com/; script-src 'self' https://cdnjs.cloudflare.com/ ; style-src 'self' https://cdnjs.cloudflare.com/ 'unsafe-inline' ; font-src 'self' https://cdnjs.cloudflare.com/ ;">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-    <link rel="stylesheet" href="main.css">
-</head>
-<body>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://api.quotable.io/ https://t2.gstatic.com/; script-src 'self' https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://images.unsplash.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Css/main.css" />
+    <link rel="stylesheet" href="Css/settings.css" />
+    <link rel="stylesheet" href="Css/wallpaper.css" />
+    <link rel="stylesheet" href="Css/dialog_box.css" />
+  </head>
+  <body>
     <div class="parent">
-        <div class="main">
-            <div class="Widgets">
-                <!-- Time and date widget -->
-                <div id="date_time">
-                    <div id="time">
-                        12:37
-                    </div>
-                    <div id="day_date">
-                        Monday
-                    </div>
-                </div>
+      <div class="main">
+        <div class="Widgets">
+          <!-- Time and date widget -->
+          <div id="date_time">
+            <div id="time">12:37</div>
+            <div id="day_date">Monday</div>
+          </div>
 
-                <div class="quotes_widgets">
-                    <p id="quotes">
-                        Friends show their love in times of trouble, not in
-                        happiness.
-                    </p>
-                </div>
-            </div>
-            <div class='wrapper'>
-                <!-- search box -->
-                <form id="Form">
-                    <input autocomplete="off" id="Text" name="text_field"
-                        placeholder="Search Google" type="text"
-                        aria-autocomplete="list"
-                        aria-labelledby="downshift-simple-label" value=""><br><br>
-                    <button id="Search_button" type="button"><i
-                            class="fa-solid fa-magnifying-glass"></i></button>
-                    <button id="add_bookmark"><i class="fa-solid fa-plus"></i></button>
-                    
-                </form>
-                <div class="bookmark">
-                    <div class="grid" id="bookmark_grid"></div>
-                </div>
-                <!-- <div id="suggestion_list">
-                    <ul id="list">
-                    </ul> -->
-                </div>
-            </div>
+          <div class="quotes_widgets">
+            <p id="quotes">
+              Friends show their love in times of trouble, not in happiness.
+            </p>
+          </div>
         </div>
-        <div class="bottom_bar">
-            <button id="settings" title="Settings">
-                <i class="fa-solid fa-gear"></i>
+        <div class="wrapper">
+          <!-- search box -->
+          <form id="Form">
+            <input
+              autocomplete="off"
+              id="Text"
+              name="text_field"
+              placeholder="Search Google"
+              type="text"
+              aria-autocomplete="list"
+              aria-labelledby="downshift-simple-label"
+              value=""
+            /><br /><br />
+            <button id="Search_button" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
             </button>
-            <button id="wallpaper" title="Wallpapers">
-                <i class="fa-solid fa-image"></i>
-            </button>
+            <!-- <button id="add_bookmark"><i class="fa-solid fa-plus"></i></button> -->
+          </form>
         </div>
+      </div>
+
+      <div class="bottom_bar">
+        <button id="settings" title="Settings">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+        <button id="wallpaper" title="Wallpapers">
+          <i class="fa-solid fa-image"></i>
+        </button>
+      </div>
     </div>
     <dialog class="Bookmark_window">
-        <div class="bookmark_header">
-            <h3 id="Bookmark_title">Create Bookmark</h3>
-            <button class="Close" id="bookmark_close">
-                <i class="fa-solid fa-x"></i>
-            </button>
+      <div class="bookmark_header">
+        <h3 id="Bookmark_title">Create Bookmark</h3>
+        <button class="Close" id="bookmark_close">
+          <i class="fa-solid fa-x"></i>
+        </button>
+      </div>
+      <div class="bookmark_main">
+        <div class="icon-field"></div>
+        <div class="form-group">
+          <input
+            class="form-field"
+            type="text"
+            id="name_box"
+            placeholder="Name"
+          />
         </div>
-        <div class="bookmark_main">
-            <div class="icon-field">
-            </div>
-            <div class="form-group">
-                <input class="form-field" type="text" id='name_box'
-                    placeholder="Name">
-            </div>
-            <div class="form-group">
-                <span>https://</span>
-                <input class="form-field" type="text" id='url_box'
-                    placeholder="domain.tld">
-            </div>
+        <div class="form-group">
+          <span>https://</span>
+          <input
+            class="form-field"
+            type="text"
+            id="url_box"
+            placeholder="domain.tld"
+          />
         </div>
-        <div class="bookmark_footer">
-            <button id="bookmark_save" class="dbutton">Save</button>
-        </div>
+      </div>
+      <div class="bookmark_footer">
+        <button id="bookmark_save" class="dbutton">Save</button>
+      </div>
     </dialog>
     <dialog class="delete_bookmark_dialog">
-        <button class="Close" id="delete_close">
-            <i class="fa-solid fa-x"></i>
-        </button>
-        <div class="delte_dialoge_button">
-            <button id="delete_cancel" class="dbutton">Cancel</button>
-            <button id="delete_confirm" class="dbutton">Delete</button>
-        </div>
+      <button class="Close" id="delete_close">
+        <i class="fa-solid fa-x"></i>
+      </button>
+      <div class="delte_dialoge_button">
+        <button id="delete_cancel" class="dbutton">Cancel</button>
+        <button id="delete_confirm" class="dbutton">Delete</button>
+      </div>
     </dialog>
     <dialog class="Settings_window">
-        <h3 id="settings_title">Settings</h3>
-        <div class="settings_sidebar">
-            <ul>
-                <li><button id="General_tab">General</button></li>
-                <li><button id="Search_tab">Search</button></li>
-            </ul>
-        </div>
-        <div class="General">
-            <ul>
-                <div class="time_settings">
-                    <p id="time_label">Time format</p>
-                    <select name="hour" id="hour">
-                        <option value="12 hour">12 hour</option>
-                        <option value="24 hour">24 hour</option>
-                    </select>
-                </div>
-            </ul>
-        </div>
-        <div class="Search">
-            <ul>
-                <div class="new_tab">
-                    <p id="new_tab_label">Open Result In New Tab</p>
-                    <input type="checkbox" id="switch" /><label
-                        for="switch">Toggle</label>
-                </div>
-            </ul>
-        </div>
-        <div class="dialoge_button">
-            <button id="settings_cancel" class="dbutton">Cancel</button>
-            <button id="settings_save" class="dbutton">Save</button>
-        </div>
+      <h3 id="settings_title">Settings</h3>
+      <div class="settings_sidebar">
+        <ul>
+          <li><button id="General_tab">General</button></li>
+          <li><button id="Search_tab">Search</button></li>
+          <li><button id="Bookmark_tab">Bookmark</button></li>
+          <li><button id="Wallpaper_tab">Wallpaper Gallery</button></li>
+        </ul>
+      </div>
+      <div class="General">
+        <ul>
+          <div class="time_settings">
+            <p class="settings_label">Time format</p>
+            <select name="hour" id="hour">
+              <option value="12 hour">12 hour</option>
+              <option value="24 hour">24 hour</option>
+            </select>
+          </div>
+        </ul>
+      </div>
+      <div class="Search">
+        <ul>
+          <div class="new_tab">
+            <p class="settings_label">Open Result In New Tab</p>
+            <input type="checkbox" id="switch" /><label for="switch"
+              >Toggle</label
+            >
+          </div>
+        </ul>
+      </div>
+      <div class="dialoge_button">
+        <button id="settings_cancel" class="dbutton">Cancel</button>
+        <button id="settings_save" class="dbutton">Save</button>
+      </div>
     </dialog>
-    <dialog class="Wallpaper_window">
+    <div class="dialog_container">
+      <dialog class="Wallpaper_window" Display_img>
         <div class="wallpaper_header">
-            <button class="Close" id="close">
-                <i class="fa-solid fa-x"></i>
-            </button>
+          <button class="Close" id="close">
+            <i class="fa-solid fa-x"></i>
+          </button>
         </div>
-        <div class="wallpaper_main" id="masonryContainer">
-        </div>
-        <div class="wallpaper_upload" style="display: none;">
-            <div class="upload-btn-wrapper">
-                <button class="btn">Upload a file</button>
-                <input id="image-file" type="file" accept=".jpg,.png" />
-            </div>
-            <img id="Display_img" onerror="this.style.display='none'" />
-            <button id="save_upload">Apply Wallpaper</button>
+        <div class="wallpaper_main" id="masonryContainer"></div>
+        <div class="wallpaper_upload" style="display: none">
+          <div class="upload-btn-wrapper">
+            <button class="btn">Upload a file</button>
+            <input id="image-file" type="file" accept=".jpg,.png" />
+          </div>
+          <img id="Display_img" onerror="this.style.display='none'" />
+          <button id="save_upload">Apply Wallpaper</button>
         </div>
         <div class="wallpaper_bottom_bar">
-            <button id="Wallpaper_Home" autofocus>
-                <i class="fa-solid fa-house"></i>
-            </button>
-            <button id="Wallpaper_user_upload">
-                <i class="fa-solid fa-images"></i>
-            </button>
+          <button id="Wallpaper_Home" autofocus>
+            <i class="fa-solid fa-house"></i>
+          </button>
+          <button id="Wallpaper_user_upload">
+            <i class="fa-solid fa-images"></i>
+          </button>
         </div>
-    </dialog>
-    <div id="context-menu">
-        <div class="menu_item" id="delete_bookmark">Delete</div>
-        <!-- <div class="menu_item" id="edit_bookmark">Edit</div> -->
-        <div class="menu_item" id="open_in_new_tab">Open In New Tab</div>
-        <!-- <div class="menu_item">Menu Item 4</div> -->
-        <!-- <div class="menu_item">Menu Item 5</div> -->
+      </dialog>
     </div>
+    <!-- <div id="context-menu">
+        <div class="menu_item" id="delete_bookmark">Delete</div>
+        <div class="menu_item" id="edit_bookmark">Edit</div> -->
+    <!-- <div class="menu_item" id="open_in_new_tab">Open In New Tab</div> -->
+    <!-- <div class="menu_item">Menu Item 4</div> -->
+    <!-- <div class="menu_item">Menu Item 5</div> -->
+    <!--</div> -->
     <link rel="stylesheet" href="mosaic-styles.css" />
-    <script src="lazy-load-mosaic-tile-script.js"></script>
+    <script src="resource/lazy-load-mosaic-tile-script.js"></script>
     <script src="resource/web-animations.js"></script>
     <script src="resource/hammer.js"></script>
     <script src="resource/murri.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.2/web-animations.min.js"
-        integrity="sha512-oAY57i8MXmaOP7pAylNLnULAM4QLV3uGnvnXVY4zF229/zFzTvG2/5YIgH8iN8oZR2hnbkiDPd4JCJGaH4oG6g=="
-        ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
-        integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script> -->
     <script src="main.js"></script>
-</body>
+    <script src="resource/wallpaper.js"></script>
+  </body>
 </html>
