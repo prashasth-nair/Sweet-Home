@@ -10,7 +10,7 @@
     />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://api.quotable.io/ https://t2.gstatic.com/; script-src 'self' https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://images.unsplash.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
+      content="default-src 'self' https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://api.quotable.io/ https://t2.gstatic.com/; script-src 'self' https://unpkg.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://fonts.googleapis.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
     />
     <link
       rel="stylesheet"
@@ -151,7 +151,7 @@
             <i class="fa-solid fa-x"></i>
           </button>
         </div>
-        <div class="wallpaper_main" id="masonryContainer"></div>
+        <div class="grid" id="imageContainer"></div>
         <div class="wallpaper_upload" style="display: none">
           <div class="upload-btn-wrapper">
             <button class="btn">Upload a file</button>
@@ -160,13 +160,15 @@
           <img id="Display_img" onerror="this.style.display='none'" />
           <button id="save_upload">Apply Wallpaper</button>
         </div>
-        <div class="wallpaper_bottom_bar">
-          <button id="Wallpaper_Home" autofocus>
-            <i class="fa-solid fa-house"></i>
-          </button>
-          <button id="Wallpaper_user_upload">
-            <i class="fa-solid fa-images"></i>
-          </button>
+        <div class="footer">
+          <div class="wallpaper_bottom_bar">
+            <button id="Wallpaper_Home" autofocus>
+              <i class="fa-solid fa-house wallpaper_icons"></i>
+            </button>
+            <button id="Wallpaper_user_upload">
+              <i class="fa-solid fa-images wallpaper_icons"></i>
+            </button>
+          </div>
         </div>
       </dialog>
     </div>
@@ -177,8 +179,11 @@
     <!-- <div class="menu_item">Menu Item 4</div> -->
     <!-- <div class="menu_item">Menu Item 5</div> -->
     <!--</div> -->
-    <link rel="stylesheet" href="mosaic-styles.css" />
-    <script src="resource/lazy-load-mosaic-tile-script.js"></script>
+    <!-- <link rel="stylesheet" href="mosaic-styles.css" /> -->
+    <!-- <script src="resource/lazy-load-mosaic-tile-script.js"></script> -->
+
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
     <script src="resource/web-animations.js"></script>
     <script src="resource/hammer.js"></script>
     <script src="resource/murri.js"></script>

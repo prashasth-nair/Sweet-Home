@@ -23,7 +23,7 @@ body {
 }
 
 input:focus {
-  /* removing the input focus blue box. Put this on the form if you like. */
+  /* removing the input focus blue box. */
   outline: none;
 }
 
@@ -140,11 +140,9 @@ input:focus {
   width: 500px;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  /* row-gap: 30px; */
   position: relative;
   top: 30px;
   margin: 10px;
-  /* place-items: center; */
 }
 
 .quotes_widgets {
