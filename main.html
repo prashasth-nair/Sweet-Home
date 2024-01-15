@@ -10,7 +10,7 @@
     />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://api.quotable.io/ https://t2.gstatic.com/; script-src 'self' https://unpkg.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://fonts.googleapis.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
+      content="default-src 'self' https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://api.quotable.io/ https://t2.gstatic.com/; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://fonts.googleapis.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
     />
     <link
       rel="stylesheet"
@@ -147,11 +147,26 @@
     <div class="dialog_container">
       <dialog class="Wallpaper_window" Display_img>
         <div class="wallpaper_header">
+          <h3 id="Wallpaper_title">Wallpaper Gallery</h3>
           <button class="Close" id="close">
             <i class="fa-solid fa-x"></i>
           </button>
         </div>
-        <div class="grid" id="imageContainer"></div>
+        <div class="wallpaper_main">
+          
+
+            // Default values shown
+            <l-hatch
+              id="loader"
+              size="28"
+              stroke="4"
+              speed="3.5"
+              color="white" 
+            ></l-hatch>
+          <div class="genre" id="GenreID"></div>
+          <div class="grid" id="imageContainer"></div>
+        </div>
+
         <div class="wallpaper_upload" style="display: none">
           <div class="upload-btn-wrapper">
             <button class="btn">Upload a file</button>
@@ -181,7 +196,7 @@
     <!--</div> -->
     <!-- <link rel="stylesheet" href="mosaic-styles.css" /> -->
     <!-- <script src="resource/lazy-load-mosaic-tile-script.js"></script> -->
-
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/hatch.js"></script>
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
     <script src="resource/web-animations.js"></script>

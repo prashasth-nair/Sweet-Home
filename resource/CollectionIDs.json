@@ -1,0 +1,8 @@
+{
+  "Space": { "ID": 4332580, "Name": "Space", "numImagesAvailable": "535" },
+  "Summer": { "ID": 3349583, "Name": "Summer", "numImagesAvailable": "895" },
+
+  "Animal": { "ID": 1265793, "Name": "Animal", "numImagesAvailable": "994" },
+  "Travel": { "ID": 3356570, "Name": "Travel", "numImagesAvailable": "962" },
+  "Love": { "ID": 81697370, "Name": "Love", "numImagesAvailable": "601" }
+}
