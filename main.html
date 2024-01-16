@@ -10,7 +10,7 @@
     />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://api.quotable.io/ https://t2.gstatic.com/; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://fonts.googleapis.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
+      content="default-src 'self' data: https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://api.quotable.io/ https://t2.gstatic.com/; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://fonts.googleapis.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
     />
     <link
       rel="stylesheet"
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="Css/settings.css" />
     <link rel="stylesheet" href="Css/wallpaper.css" />
     <link rel="stylesheet" href="Css/dialog_box.css" />
+    <link rel="stylesheet" href="Css/upload_wallpaper.css" />
   </head>
   <body>
     <div class="parent">
@@ -153,28 +154,52 @@
           </button>
         </div>
         <div class="wallpaper_main">
-          
-
-            // Default values shown
-            <l-hatch
-              id="loader"
-              size="28"
-              stroke="4"
-              speed="3.5"
-              color="white" 
-            ></l-hatch>
+          <l-hatch
+            id="loader"
+            size="28"
+            stroke="4"
+            speed="3.5"
+            color="white"
+          ></l-hatch>
           <div class="genre" id="GenreID"></div>
           <div class="grid" id="imageContainer"></div>
         </div>
 
+        <!-- Wallpaper Upload -->
         <div class="wallpaper_upload" style="display: none">
-          <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
-            <input id="image-file" type="file" accept=".jpg,.png" />
+          <div class="drop-zone" id="dropZone">
+            <span class="drop-text">Drag & Drop or Click to Upload</span>
+            <input type="file" class="file-input" id="fileInput" />
+            <!-- <img
+              src="#"
+              alt="Uploaded Image"
+              class="uploaded-image"
+              id="uploadedImage"
+            />  -->
           </div>
-          <img id="Display_img" onerror="this.style.display='none'" />
-          <button id="save_upload">Apply Wallpaper</button>
         </div>
+
+        <!-- Image Preview -->
+        <div class="Image-Preview" style="display: none">
+          <div class="Image-Preview-Container">
+            <div class="Image-Preview-Body">
+              <img
+                src="#"
+                alt="Uploaded Image"
+                class="uploaded-image"
+                id="uploadedImage"
+              />
+            </div>
+            <div class="Image-Preview-Footer">
+              <button id="preview_cancel" class="dbutton">Cancel</button>
+              <button id="preview_apply" class="dbutton">
+                Apply Wallpaper
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wallpaper Bottom nav -->
         <div class="footer">
           <div class="wallpaper_bottom_bar">
             <button id="Wallpaper_Home" autofocus>
@@ -196,13 +221,22 @@
     <!--</div> -->
     <!-- <link rel="stylesheet" href="mosaic-styles.css" /> -->
     <!-- <script src="resource/lazy-load-mosaic-tile-script.js"></script> -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/hatch.js"></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/hatch.js"
+    ></script>
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
     <script src="resource/web-animations.js"></script>
     <script src="resource/hammer.js"></script>
     <script src="resource/murri.js"></script>
     <script src="main.js"></script>
-    <script src="resource/wallpaper.js"></script>
+
+    <!-- Wallpaper JS files -->
+    <script src="resource/Wallpaper_JS/wallpaper.js"></script>
+    <script src="resource/Wallpaper_JS/upload_wallpaper.js"></script>
+
+    <!-- Settings JS files -->
+    <script src="resource/settings.js"></script>
   </body>
 </html>

@@ -10,6 +10,9 @@ const Wallpaper_Home_button = document.querySelector("#Wallpaper_Home");
 
 const genre = document.querySelector(".genre");
 
+const Wallpaper_header = document.querySelector(".wallpaper_header");
+const Wallpaper_footer = document.querySelector(".footer");
+
 var current_genre_id = "Space";
 var is_loading = false;
 
@@ -204,32 +207,25 @@ Wallpaper_upload_button.addEventListener("click", () => {
   genre.style.display = "none";
   hideLoading();
   Wallpaper_upload.style.display = "block";
+  
+
   Wallpaper_upload_button.style.color = "#42a5f5";
   Wallpaper_Home_button.style.color = "white";
 });
 
 Wallpaper_Home_button.addEventListener("click", () => {
+  Show_home();
+});
+
+function Show_home() {
   grid.style.display = "grid";
   genre.style.display = "flex";
 
   Wallpaper_upload.style.display = "none";
+
   Wallpaper_Home_button.style.color = "#42a5f5";
   Wallpaper_upload_button.style.color = "white";
-});
-document.getElementById("save_upload").addEventListener("click", () => {
-  const reader = new FileReader();
-
-  let files = document.getElementById("image-file").files;
-  reader.onload = async (event) => {
-    document.body.style.backgroundImage = "url(" + event.target.result + ")";
-    localStorage.setItem("wallpaper_img", event.target.result);
-  };
-  reader.readAsDataURL(files[0]);
-});
-document.getElementById("image-file").addEventListener("change", (event) => {
-  readURL(document.getElementById("image-file"));
-});
-
+}
 document.getElementById("imageContainer").addEventListener("click", (e) => {
   var bgimage = e.target.src;
   if (bgimage) {
@@ -241,6 +237,9 @@ document.getElementById("imageContainer").addEventListener("click", (e) => {
 });
 
 wallpaper_button.addEventListener("click", () => {
+  wallpaper_lis.length = 0;
+  removeAllElements();
+  Show_home();
   loadImages(numImagesAvailable, numItemsToGenerate, collectionID);
   Wallpaper_dialoge.showModal();
 });
@@ -248,3 +247,5 @@ Wallpaper_close.addEventListener("click", () => {
   Wallpaper_dialoge.close();
   removeAllElements();
 });
+
+

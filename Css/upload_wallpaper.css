@@ -1,0 +1,102 @@
+.wallpaper_upload {
+  position: relative;
+  top: 25vh;
+  left: 24vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drop-zone {
+  border: 2px dashed wheat;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  width: 40vw;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+}
+
+.drop-text {
+  font-size: 20px;
+  color: gray;
+  transition: all 0.3s ease-in-out;
+}
+.drag-over {
+  border-color: #4caf50;
+  color: #4caf50;
+}
+.uploaded {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.file-input {
+  display: none;
+}
+
+.uploaded-image {
+  max-width: 100%;
+  max-height: 200px;
+  margin-top: 10px;
+  /* display: none; */
+}
+
+/* Image Preview */
+.Image-Preview {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: transparent;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  margin:0;
+  padding: 0;
+}
+#uploadedImage{
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -100 ;
+  object-fit: cover;
+}
+.Image-Preview-Footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+
+}
+.Image-Preview-Footer button{
+  width: 150px;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  font-size: 16px;
+
+  text-align: center;
+}
+#preview_cancel{
+  background-color: #fdfdfd;
+  color: #0a0a0a;
+}
+#preview_apply{
+  background-color: #4caf50;
+  color: #fff;
+}

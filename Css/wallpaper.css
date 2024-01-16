@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 /* Wallpaper Dialoge box */
 .Wallpaper_window {
   width: 1240px;
@@ -45,7 +45,7 @@
   color: #fff;
   font-size: 32px;
   font-weight: 1000;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 10px;
   padding: 10px;
 }
@@ -103,12 +103,12 @@
 }
 .genre {
   color: wheat;
-  margin-top: 50px;
+  margin-top: 80px;
   display: flex;
   justify-content: center;
   gap: 10px;
 }
-#Space{
+#Space {
   background-color: wheat;
   color: #000;
 }
@@ -160,84 +160,4 @@
   width: 400px;
   height: 200px;
   padding: 2px;
-}
-
-
-
-.btn {
-  display: inline-block;
-  margin-right: 10px;
-  background: #339dff;
-  color: #fff;
-  text-decoration: none;
-  font-size: 13px;
-  line-height: 38px;
-  border-radius: 50px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  width: 170px;
-  text-align: center;
-  border: none;
-}
-.upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
-.upload-btn-wrapper input[type="file"] {
-  font-size: 100px;
-  left: 0;
-  position: fixed;
-  top: 100px;
-  opacity: 0;
-}
-
-#save_upload {
-  position: absolute;
-  bottom: 80px;
-  right: 50px;
-  background-color: initial;
-  background-image: linear-gradient(-180deg, #00d775, #00bd68);
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial,
-    sans-serif;
-  height: 44px;
-  line-height: 44px;
-  outline: 0;
-  overflow: hidden;
-  padding: 0 20px;
-  pointer-events: auto;
-  text-align: center;
-  touch-action: manipulation;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: top;
-  white-space: nowrap;
-  z-index: 9;
-  border: 0;
-}
-
-#save_upload:hover {
-  background: #00bd68;
-}
-
-#Display_img {
-  width: 50vw;
-  height: 400px;
-  position: absolute;
-  top: 100px;
-  left: 301px;
-  object-fit: scale-down;
-  padding: 30px;
-  border-radius: 10px;
-}
-
-.wallpaper_upload{
-
-  position: absolute;
-  top: 200px;
 }

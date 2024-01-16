@@ -1,162 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
 /* Settings */
 /* -------------------------------------------- */
 .Settings_window {
-    width: 700px;
-    height: 500px;
-    padding: 0px;
+  width: 1000px;
+  height: 500px;
+  padding: 0px;
+  background-color: #191919;
+  color: wheat;
+  overflow: hidden;
 }
 
 #settings_title {
-    margin: 15px;
-    line-height: 1.16667em;
-    display: block;
-    font-size: 1.5em;
-    font-weight: bold;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 1000;
+  font-family: "Poppins", sans-serif;
+  margin: 10px;
+  padding: 10px;
 }
 
 .dialogue_button {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 #settings_cancel {
-    position: absolute;
-    margin-right: 30px;
-    margin-bottom: 15px;
-    bottom: 0px;
-    right: 60px;
+  position: absolute;
+  margin-right: 30px;
+  margin-bottom: 15px;
+  bottom: 0px;
+  right: 60px;
 }
 
-
 #settings_save {
-    position: absolute;
-    margin-right: 5px;
-    margin-bottom: 15px;
-    bottom: 0px;
-    right: 10px;
+  position: absolute;
+  margin-right: 5px;
+  margin-bottom: 15px;
+  bottom: 0px;
+  right: 10px;
 }
 
 .settings_sidebar {
-    position: relative;
-    width: 190px;
-    left: 0;
-    float: left;
-    border-right: 1px solid rgba(0, 0, 0, 0.12);
+  position: relative;
+  width: 190px;
+  height: 100%;
+  left: 0;
+  float: left;
+  border-right: 1px solid rgba(255, 253, 253, 0.12);
 }
 
 .settings_sidebar ul {
-    list-style-type: none;
-    text-align: left;
-    margin-left: 0;
-    padding-left: 0;
-    padding-bottom: 8px;
-
+  list-style-type: none;
+  text-align: left;
+  margin-left: 0;
+  padding-left: 0;
+  padding-bottom: 8px;
 }
 
 .settings_sidebar ul button {
-    display: block;
-    line-height: 20px;
-    width: 100%;
-    font-size: 16px;
-    text-align: center;
-    color: black;
-    margin: 0;
-    padding: 15px;
-    text-decoration: none;
-    background: none;
-    border: none;
-
+  display: block;
+  line-height: 20px;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 15px;
+  text-decoration: none;
+  background: none;
+  border: none;
 }
 
-
 .settings_sidebar ul button:hover {
-    background-color: #ebebeb;
+  background-color: #ebebeb;
+  color: black;
 }
 
 .General {
-    float: left;
-    width: auto;
-    display: block;
+  float: left;
+  width: auto;
+  display: block;
 }
-.settings_label{
-    width: 200px;
-    font-size: 17px;
+.settings_label {
+  width: 200px;
+  font-size: 18px;
 }
 
 .time_settings {
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-    /* Tells number of columns in grid */
-
+  display: flex;
+  width: 100%;
+  align-items: center;
+  /* Tells number of columns in grid */
 }
 
 #hour {
-    margin-left: 140px;
-    border: none;
-    font-size: 15px;
-    padding: 2px;
-    border-bottom: 1px solid black;
+  margin-left: 140px;
+  border: none;
+  font-size: 16px;
+  width: 100px;
+  position: absolute;
+  right: 40px;
+  padding: 2px;
+  border-bottom: 1px solid black;
 }
 
 .Search {
-    display: none;
-    float: left;
-    width: auto;
+  display: none;
+  float: left;
+  width: auto;
 }
 
 .new_tab {
-    display: grid;
-    width: 100%;
-    grid-template-columns: 170px 190px 60px;
-    grid-column-gap: 0px;
-    grid-template-rows: 1fr;
-    place-items: center;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 170px 190px 60px;
+  grid-column-gap: 0px;
+  grid-template-rows: 1fr;
+  place-items: center;
 
-    /* Tells number of columns in grid */
-
+  /* Tells number of columns in grid */
 }
 
 /* Switch button */
-input[type=checkbox] {
-    height: 0;
-    width: 0;
-    visibility: hidden;
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
 }
 
 .new_tab label {
-    cursor: pointer;
-    text-indent: -9999px;
-    width: 50px;
-    height: 30px;
-    background: grey;
-    display: block;
-    border-radius: 25px;
-    position: relative;
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 50px;
+  height: 30px;
+  background: grey;
+  display: block;
+  border-radius: 25px;
+  position: relative;
 }
 
 .new_tab label:after {
-    content: '';
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    border-radius: 10px;
-    transition: 0.3s;
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 10px;
+  transition: 0.3s;
 }
 
-.new_tab input:checked+label {
-    background: #bada55;
+.new_tab input:checked + label {
+  background: #bada55;
 }
 
-.new_tab input:checked+label:after {
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
+.new_tab input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
 }
 
 .new_tab label:active:after {
-    width: 30px;
+  width: 30px;
 }
