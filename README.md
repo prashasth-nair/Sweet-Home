@@ -12,9 +12,6 @@ With Sweet Home, you have the ability to customize your New Tab with a variety o
 
 Upgrade your browsing experience and make the most out of every new tab opening. Download Sweet Home today and start customizing!
 
-
-
-
 ## Features
 
 - Time and date 
@@ -22,8 +19,14 @@ Upgrade your browsing experience and make the most out of every new tab opening.
 - Search box
 - Wallpapers
 
+## TODO
+- [ ] Add Weather
+- [ ] Add more customization options
+- [ ] Improve settings dialogue Box
+- [ ] Add bookmarks
+- [ ] Add favourites in wallpaper gallery
 
-## Author
+## Developer 
 
 - [@prashasth-nair](https://github.com/prashasth-nair)
 
