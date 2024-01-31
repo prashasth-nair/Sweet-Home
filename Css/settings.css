@@ -61,20 +61,21 @@
 .settings_sidebar ul button {
   display: block;
   line-height: 20px;
-  width: 100%;
+  width: 90%;
   font-size: 16px;
   text-align: center;
   color: white;
-  margin: 0;
+  margin: 10px;
   padding: 15px;
   text-decoration: none;
   background: none;
   border: none;
+  border-radius: 25px;
 }
 
 .settings_sidebar ul button:hover {
-  background-color: #ebebeb;
-  color: black;
+  background-color: wheat !important; /* !important: is used to tell use this css even after changing in js*/
+  color: black !important;
 }
 
 .General {
@@ -83,7 +84,7 @@
   display: block;
 }
 .settings_label {
-  width: 200px;
+  width: 30vw;
   font-size: 18px;
 }
 
@@ -96,13 +97,22 @@
 
 #hour {
   margin-left: 140px;
-  border: none;
+  border: 1px solid white;
+  color: wheat;
   font-size: 16px;
-  width: 100px;
+  text-align: center;
+  width: 140px;
   position: absolute;
   right: 40px;
   padding: 2px;
-  border-bottom: 1px solid black;
+  border-radius: 10px;
+  height: 40px;
+  background-color: transparent;
+
+}
+.hr-value{
+  background-color: #191919;
+  font-size: 16px;
 }
 
 .Search {
@@ -111,13 +121,23 @@
   width: auto;
 }
 
-.new_tab {
+/* .new_tab {
   display: grid;
   width: 100%;
   grid-template-columns: 170px 190px 60px;
   grid-column-gap: 0px;
   grid-template-rows: 1fr;
   place-items: center;
+  position: absolute;
+
+   Tells number of columns in grid 
+} */
+.new_tab {
+  display: flex;
+  width: 100%;
+  place-items: center;
+  position: absolute;
+  
 
   /* Tells number of columns in grid */
 }
@@ -132,12 +152,14 @@ input[type="checkbox"] {
 .new_tab label {
   cursor: pointer;
   text-indent: -9999px;
-  width: 50px;
+  width: 60px;
   height: 30px;
   background: grey;
   display: block;
   border-radius: 25px;
-  position: relative;
+  position:relative;
+  left: 18vw;
+
 }
 
 .new_tab label:after {
@@ -153,7 +175,7 @@ input[type="checkbox"] {
 }
 
 .new_tab input:checked + label {
-  background: #bada55;
+  background: wheat;
 }
 
 .new_tab input:checked + label:after {
@@ -163,4 +185,44 @@ input[type="checkbox"] {
 
 .new_tab label:active:after {
   width: 30px;
+}
+
+
+
+
+
+/* Dialogue Button */
+.dialoge_button {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+}
+#settings_cancel{
+  width: 100px;
+  margin-right: 90px;
+
+  border-radius: 20px;
+  color: black;
+  background: white;
+  transition: 0.3s background-color;
+}
+#settings_cancel:hover{
+  background-color: transparent;
+  border: 1px solid wheat;
+  color: wheat;
+}
+#settings_save{
+  width: 100px;
+  border-radius: 20px;
+  color: white ;
+  background: green;
+  margin-right: 20px;
+  
+}
+#settings_save:hover{
+  background-color: rgb(1, 52, 1);
+  border: 1px solid wheat;
+
+  color: white;
 }
