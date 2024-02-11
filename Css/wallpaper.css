@@ -35,6 +35,7 @@
 
 .Close:hover {
   background-color: #ebebeb;
+  color: #000;
 }
 
 .Close:focus {

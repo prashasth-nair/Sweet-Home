@@ -2,7 +2,7 @@
 
 const search_box = document.querySelector("#Text");
 const quotes = document.querySelector("#quotes");
-const icon = document.querySelector(".icon-field");
+
 
 var hour_format = localStorage.getItem("hour_format");
 
@@ -12,8 +12,10 @@ async function fetchDataAsync(url) {
   const response = await fetch(url);
 
   const data = await response.json();
-  document.getElementById("quotes").innerHTML =
-    '"' + [data["content"]] + '"' + "<br><br>--" + data["author"];
+  const quotesElement = document.getElementById("quotes");
+
+ // Use textContent instead of innerHTML to prevent XSS
+  quotesElement.textContent = '"' + [data["content"]] + '"' + "\n\n--" + data["author"];
 }
 fetchDataAsync(url);
 
