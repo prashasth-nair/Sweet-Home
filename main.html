@@ -10,7 +10,11 @@
     />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' data: https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://api.quotable.io/ https://t2.gstatic.com/; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://fonts.googleapis.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
+      content="default-src 'self' data: https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://zenquotes.io/ https://t2.gstatic.com/; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://fonts.googleapis.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
+    />
+    <meta
+    http-equiv="Access-Control-Allow-Origin"
+    content="*"
     />
     <link
       rel="stylesheet"
@@ -23,42 +27,46 @@
     <link rel="stylesheet" href="Css/dialog_box.css" />
     <link rel="stylesheet" href="Css/upload_wallpaper.css" />
     <link rel="stylesheet" href="Css/bookmarks.css" />
+    <link
+      href="node_modules/gridstack/dist/gridstack.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="parent">
-      <div class="main">
-        <div class="Widgets">
-          <!-- Time and date widget -->
-          <div id="date_time">
-            <div id="time">12:37</div>
-            <div id="day_date">Monday</div>
-          </div>
+    <div class="main">
+      <div class="Widgets">
+        <!-- Time and date widget -->
+        <div id="date_time">
+          <div id="time">12:37</div>
+          <div id="day_date">Monday</div>
+        </div>
 
-          <div class="quotes_widgets">
-            <p id="quotes">
-              Friends show their love in times of trouble, not in happiness.
-            </p>
-          </div>
+        <div class="quotes_widgets">
+          <p id="quotes">
+            Friends show their love in times of trouble, not in happiness.
+          </p>
         </div>
-        <div class="wrapper">
-          <!-- search box -->
-          <form id="Form">
-            <input
-              autocomplete="off"
-              id="Text"
-              name="text_field"
-              placeholder="Search Google"
-              type="text"
-              aria-autocomplete="list"
-              aria-labelledby="downshift-simple-label"
-              value=""
-            /><br /><br />
-            <button id="Search_button" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <button id="add_bookmark"><i class="fa-solid fa-plus"></i></button>
-          </form>
-        </div>
+      </div>
+      <div class="wrapper">
+        <!-- search box -->
+        <form id="Form">
+          <input
+            autocomplete="off"
+            id="Text"
+            name="text_field"
+            placeholder="Search Google"
+            type="text"
+            aria-autocomplete="list"
+            aria-labelledby="downshift-simple-label"
+            value=""
+          /><br /><br />
+          <button id="Search_button" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button id="add_bookmark"><i class="fa-solid fa-plus"></i></button>
+        </form>
+
+        <div class="bookmark_layout" id="bookmark_layout"></div>
       </div>
 
       <div class="bottom_bar">
@@ -73,12 +81,10 @@
     <dialog class="Bookmark_window">
       <div class="bookmark_header">
         <h3 id="Bookmark_title">CREATE BOOKMARK</h3>
-
-        </button>
       </div>
       <div class="bookmark_main">
         <div class="icon"><div class="icon-field"></div></div>
-        
+
         <div class="forms">
           <div class="form-group">
             <input
@@ -97,7 +103,6 @@
             />
           </div>
         </div>
-       
       </div>
       <div class="bookmark_footer">
         <button id="bookmark_cancel" class="dbutton">Cancel</button>
@@ -174,7 +179,6 @@
           <div class="drop-zone" id="dropZone">
             <span class="drop-text">Drag & Drop or Click to Upload</span>
             <input type="file" class="file-input" id="fileInput" />
-        
           </div>
         </div>
 
@@ -220,6 +224,9 @@
     <!--</div> -->
     <!-- <link rel="stylesheet" href="mosaic-styles.css" /> -->
     <!-- <script src="resource/lazy-load-mosaic-tile-script.js"></script> -->
+    <script src="node_modules/gridstack/dist/gridstack-all.js"></script>
+
+    <script src="resource/murri.js"></script>
     <script src="resource/bookmark.js"></script>
     <script
       type="module"
@@ -238,6 +245,5 @@
 
     <!-- Settings JS files -->
     <script src="resource/settings.js"></script>
-
   </body>
 </html>
