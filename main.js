@@ -6,16 +6,24 @@ const quotes = document.querySelector("#quotes");
 
 var hour_format = localStorage.getItem("hour_format");
 
-var url = "https://api.quotable.io/random";
+var url = "https://zenquotes.io/api/random";
 
 async function fetchDataAsync(url) {
-  const response = await fetch(url);
+  // TODO: Bypass CORS
+  const xhr = new XMLHttpRequest();
 
-  const data = await response.json();
-  const quotesElement = document.getElementById("quotes");
+  xhr.open('POST', url);
+  xhr.setRequestHeader( 'Access-Control-Allow-Origin', '*');
+  xhr.onload = () => console.log(JSON.parse(xhr.responseText));
+  xhr.send();
 
- // Use textContent instead of innerHTML to prevent XSS
-  quotesElement.textContent = '"' + [data["content"]] + '"' + "\n\n--" + data["author"];
+//   const response = await fetch(url);
+
+//   const data = await response.json();
+//   const quotesElement = document.getElementById("quotes");
+
+//  // Use textContent instead of innerHTML to prevent XSS
+//   quotesElement.textContent = '"' + [data["q"]] + '"' + "\n\n--" + data["a"];
 }
 fetchDataAsync(url);
 
