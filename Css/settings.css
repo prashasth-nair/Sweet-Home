@@ -108,9 +108,8 @@
   border-radius: 10px;
   height: 40px;
   background-color: transparent;
-
 }
-.hr-value{
+.hr-value {
   background-color: #191919;
   font-size: 16px;
 }
@@ -134,10 +133,10 @@
 } */
 .new_tab {
   display: flex;
-  width: 100%;
+  width: 90vw;
   place-items: center;
+  align-items: center;
   position: absolute;
-  
 
   /* Tells number of columns in grid */
 }
@@ -157,9 +156,8 @@ input[type="checkbox"] {
   background: grey;
   display: block;
   border-radius: 25px;
-  position:relative;
-  left: 18vw;
-
+  position: relative;
+  /* left: 18vw; */
 }
 
 .new_tab label:after {
@@ -195,7 +193,7 @@ input[type="checkbox"] {
   bottom: 0;
   display: flex;
 }
-#settings_cancel{
+#settings_cancel {
   width: 100px;
   margin-right: 90px;
 
@@ -204,20 +202,19 @@ input[type="checkbox"] {
   background: white;
   transition: 0.3s background-color;
 }
-#settings_cancel:hover{
+#settings_cancel:hover {
   background-color: transparent;
   border: 1px solid wheat;
   color: wheat;
 }
-#settings_save{
+#settings_save {
   width: 100px;
   border-radius: 20px;
-  color: white ;
+  color: white;
   background: green;
   margin-right: 20px;
-  
 }
-#settings_save:hover{
+#settings_save:hover {
   background-color: rgb(1, 52, 1);
   border: 1px solid wheat;
 

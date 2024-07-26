@@ -70,15 +70,13 @@
         </button>
       </div>
     </div>
-    <dialog class="Bookmark_window">
+    <dialog class="Bookmark_window" id="bookmark_dialog">
       <div class="bookmark_header">
         <h3 id="Bookmark_title">CREATE BOOKMARK</h3>
-
-        </button>
       </div>
       <div class="bookmark_main">
         <div class="icon"><div class="icon-field"></div></div>
-        
+
         <div class="forms">
           <div class="form-group">
             <input
@@ -97,10 +95,15 @@
             />
           </div>
         </div>
-       
       </div>
       <div class="bookmark_footer">
-        <button id="bookmark_cancel" class="dbutton">Cancel</button>
+        <button
+          id="bookmark_cancel"
+          class="dbutton"
+          onclick="bookmark_dialog.close()"
+        >
+          Cancel
+        </button>
         <button id="bookmark_save" class="dbutton">Save</button>
       </div>
     </dialog>
@@ -174,7 +177,6 @@
           <div class="drop-zone" id="dropZone">
             <span class="drop-text">Drag & Drop or Click to Upload</span>
             <input type="file" class="file-input" id="fileInput" />
-        
           </div>
         </div>
 
@@ -238,6 +240,5 @@
 
     <!-- Settings JS files -->
     <script src="resource/settings.js"></script>
-
   </body>
 </html>
