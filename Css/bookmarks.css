@@ -9,7 +9,7 @@
   font-size: 24px;
   margin-left: 20px;
   margin-top: 10px;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }
 .bookmark_main {
   margin: 10px;
@@ -81,8 +81,98 @@
   background: white;
   transition: 0.3s background-color;
 }
-.dbutton:hover{
-    background-color: transparent;
-    border: 1px solid wheat;
-    color: wheat;
+.dbutton:hover {
+  background-color: transparent;
+  border: 1px solid wheat;
+  color: wheat;
+}
+
+.item-content{
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  margin: 5px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+}
+
+.item-content img{
+  width: 50px;
+  height: 50px;
+}
+.item-content label{
+  color: white;
+  text-align: center;
+}
+.item.muuri-item-dragging {
+  z-index: 3;
+}
+.item.muuri-item-releasing {
+  z-index: 2;
+}
+.item.muuri-item-hidden {
+  z-index: 0;
+}
+
+.item{
+  width: 50px;
+  height: 50px;
+  background-size: 100% 100%;
+  
+  display: block;
+  position: absolute;
+}
+
+/* .bookmark {
+  display: flex;
+  width: 40vw;
+  height: 100%;
+  position: relative;
+
+} */
+
+.bookmark_layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.bookmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  width: 100px;
+  cursor: grab;
+}
+
+.bookmark img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 5px;
+}
+
+.bookmark span {
+  font-size: 14px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.bookmark.dragging {
+  opacity: 0.5;
+}
+/* if min width is 800px then apply this css */
+@media screen and (max-width: 800px) {
+  .bookmark{
+    position: fixed;
+    top: 270px;
+    width: 65vw;
+    left: 100px;
   }
+}
