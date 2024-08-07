@@ -16,7 +16,7 @@ async function fetchDataAsync(url) {
   const quotesElement = document.getElementById("quotes");
 
  // Use textContent instead of innerHTML to prevent XSS
-  quotesElement.textContent = '"' + [data[0]["q"]] + '"' + "\n\n--" + data[0]["a"];
+  quotesElement.innerHTML = '"' + [data[0]["q"]] + '"' + "<br><br>--" + data[0]["a"];
 }
 fetchDataAsync(url);
 
