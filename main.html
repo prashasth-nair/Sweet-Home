@@ -10,12 +10,9 @@
     />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' data: https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://zenquotes.io/ https://t2.gstatic.com/; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://fonts.googleapis.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
+      content="default-src 'self' data: https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://sweet-home-backend.onrender.com https://t2.gstatic.com/; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://fonts.googleapis.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
     />
-    <meta
-    http-equiv="Access-Control-Allow-Origin"
-    content="*"
-    />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -27,10 +24,6 @@
     <link rel="stylesheet" href="Css/dialog_box.css" />
     <link rel="stylesheet" href="Css/upload_wallpaper.css" />
     <link rel="stylesheet" href="Css/bookmarks.css" />
-    <link
-      href="node_modules/gridstack/dist/gridstack.min.css"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <div class="main">
@@ -66,7 +59,9 @@
           <button id="add_bookmark"><i class="fa-solid fa-plus"></i></button>
         </form>
 
-        <div class="bookmark_layout" id="bookmark_layout"></div>
+        <div class="bookmark_section">
+          <div class="bookmark_layout" id="bookmark_layout"></div>
+        </div>
       </div>
 
       <div class="bottom_bar">
@@ -116,9 +111,9 @@
       </div>
     </dialog>
     <dialog class="delete_bookmark_dialog">
-      <button class="Close" id="delete_close">
+      <!-- <button class="Close" id="delete_close">
         <i class="fa-solid fa-x"></i>
-      </button>
+      </button> -->
       <div class="delte_dialoge_button">
         <button id="delete_cancel" class="dbutton">Cancel</button>
         <button id="delete_confirm" class="dbutton">Delete</button>
@@ -221,18 +216,17 @@
         </div>
       </dialog>
     </div>
-    <!-- <div id="context-menu">
-        <div class="menu_item" id="delete_bookmark">Delete</div>
-        <div class="menu_item" id="edit_bookmark">Edit</div> -->
-    <!-- <div class="menu_item" id="open_in_new_tab">Open In New Tab</div> -->
-    <!-- <div class="menu_item">Menu Item 4</div> -->
-    <!-- <div class="menu_item">Menu Item 5</div> -->
-    <!--</div> -->
-    <!-- <link rel="stylesheet" href="mosaic-styles.css" /> -->
-    <!-- <script src="resource/lazy-load-mosaic-tile-script.js"></script> -->
-    <script src="node_modules/gridstack/dist/gridstack-all.js"></script>
+    <div id="context-menu">
+      <div class="menu_item" id="delete_bookmark">Delete</div>
+      <div class="menu_item" id="edit_bookmark">Edit</div>
+    
+      <!-- <div class="menu_item" id="open_in_new_tab">Open In New Tab</div> -->
+      <!-- <div class="menu_item">Menu Item 4</div> -->
+      <!-- <div class="menu_item">Menu Item 5</div> -->
+    </div>
 
-    <script src="resource/murri.js"></script>
+
+
     <script src="resource/bookmark.js"></script>
     <script
       type="module"
@@ -242,7 +236,6 @@
     <script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
     <script src="resource/web-animations.js"></script>
     <script src="resource/hammer.js"></script>
-    <script src="resource/murri.js"></script>
     <script src="main.js"></script>
 
     <!-- Wallpaper JS files -->

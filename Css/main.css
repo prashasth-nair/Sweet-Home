@@ -175,7 +175,7 @@ input:focus {
   margin: 0 auto;
 
   flex-direction: row;
-  width: 40vw;
+  width: 46vw;
   height: 35px;
   /* This bit draws the box around it */
   border: none;
@@ -202,6 +202,7 @@ input:focus {
     left: 100px;
     
   }
+
 
 
   .grid {
