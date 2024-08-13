@@ -1,15 +1,16 @@
 .Bookmark_window {
-  width: 40vw;
-  height: 40vh;
+  width: 50vw;
+  height: 50vh;
   background-color: #191919;
   color: #ffffff;
   overflow: hidden;
 }
 #Bookmark_title {
-  font-size: 24px;
+  font-size: 30px;
   margin-left: 20px;
   margin-top: 10px;
-  margin-bottom: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 10px;
 }
 .bookmark_main {
   margin: 10px;
@@ -18,9 +19,11 @@
 }
 .icon {
   margin: 10px;
-  width: 70px;
-  height: 70px;
-  margin-left: 10px;
+  width: 100px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 4px solid white;
   border-radius: 20px;
   background-color: #c8c8c8;
@@ -31,8 +34,9 @@
   background-size: contain;
   background-repeat: no-repeat;
   margin: 10px;
-  width: 50px;
-  height: 50px;
+
+  width: 60px;
+  height: 60px;
 }
 .forms {
   margin: 10px;
@@ -49,91 +53,72 @@
 
 .form-field {
   height: 20px;
-  border-radius: 20px;
-  padding: 10px;
-  font-size: 14px;
-  width: 28vw;
+  border-radius: 15px;
+  padding: 15px;
+  font-size: 16px;
+  width: 35vw;
+  background-color: #292b2b;
+  color: white;
 }
 .form-field:focus {
   outline: none;
-  border: 2px solid red;
+  border: 2px solid wheat;
 }
 .bookmark_footer {
   position: absolute;
-  bottom: 10px;
+  bottom: 0px;
   right: 0;
-  margin: 10px;
+  width: 100%;
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
 }
 #bookmark_save {
-  width: 80px;
-  border-radius: 20px;
-  color: white;
-  background: green;
-  margin-right: 10px;
-  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  color: wheat;
+  background: #191919;
+  border: 1px solid wheat;
+  border-radius: 0px 0px 12px 0px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
 }
 #bookmark_cancel {
-  width: 80px;
-  margin-right: 10px;
-  font-size: 14px;
-  border-radius: 20px;
-  color: black;
+  width: 100%;
+  height: 50px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  color: #555555;
   background: white;
   transition: 0.3s background-color;
 }
-.dbutton:hover {
-  background-color: transparent;
-  border: 1px solid wheat;
+#bookmark_cancel:hover {
+  background: #191919;
   color: wheat;
 }
-
-.item-content{
-  width: fit-content;
-  height: fit-content;
-  position: relative;
-  margin: 5px;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  background-size: 100% 100%;
-  display: flex;
-  align-items: center;
+#bookmark_save:hover {
+  background: wheat;
+  color: #191919;
 }
 
-.item-content img{
-  width: 50px;
-  height: 50px;
-}
-.item-content label{
+
+
+.bookmark span {
   color: white;
+  word-wrap: break-word;
+  font-size: 16px;
+  filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 1));
   text-align: center;
 }
-.item.muuri-item-dragging {
-  z-index: 3;
-}
-.item.muuri-item-releasing {
-  z-index: 2;
-}
-.item.muuri-item-hidden {
-  z-index: 0;
-}
 
-.item{
+.item {
   width: 50px;
   height: 50px;
   background-size: 100% 100%;
-  
+
   display: block;
   position: absolute;
 }
-
-/* .bookmark {
-  display: flex;
-  width: 40vw;
-  height: 100%;
-  position: relative;
-
-} */
 
 .bookmark_section {
   display: flex;
@@ -151,7 +136,6 @@
   align-items: start;
   gap: 15px;
   transition: all 0.5s ease;
-  
 }
 
 .bookmark {
@@ -179,11 +163,6 @@
   margin-bottom: 5px;
 }
 
-.bookmark span {
-  font-size: 14px;
-  text-align: center;
-  word-wrap: break-word;
-}
 
 .bookmark.dragging {
   opacity: 0.5;
@@ -202,16 +181,10 @@
 
 /* if min width is 800px then apply this css */
 @media screen and (max-width: 800px) {
-  /* .bookmark{
+  .bookmark_layout {
     position: fixed;
     top: 270px;
     width: 65vw;
     left: 100px;
-  } */
-   .bookmark_layout {
-    position: fixed;
-    top: 270px;
-    width: 65vw;
-    left: 100px;
-   }
+  }
 }

@@ -13,12 +13,11 @@ const genre = document.querySelector(".genre");
 const Wallpaper_header = document.querySelector(".wallpaper_header");
 const Wallpaper_footer = document.querySelector(".footer");
 
-var current_genre_id = "Space";
 var is_loading = false;
+var wallpaper_lis = [];
 
 var bgimage = localStorage.getItem("wallpaper_img");
 let is_home = true;
-
 if (is_home) {
   Wallpaper_Home_button.style.color = "#42a5f5";
   Wallpaper_upload_button.style.color = "white";
@@ -26,59 +25,12 @@ if (is_home) {
   Wallpaper_upload_button.style.color = "#42a5f5";
   Wallpaper_Home_button.style.color = "white";
 }
-
 // default wallpaper
 if (bgimage != null) {
   document.body.style.backgroundImage = "url(" + bgimage + ")";
 } else {
   document.body.style.backgroundImage = "url('wallpapers/Wallpaper.jpg')";
 }
-
-function readJSONFile(filePath) {
-  return fetch(filePath)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      console.error("Error reading JSON file:", error);
-    });
-}
-DATA = {};
-// Genre
-const filePath = "resource\\CollectionIDs.json"; // Update with the correct path to your JSON file
-readJSONFile(filePath).then((data) => {
-  // Handle the parsed JSON data
-  // console.log(data['Space']['ID']);
-
-  for (const [key, value] of Object.entries(data)) {
-    console.log(key);
-    const div = document.createElement("div");
-    div.classList.add("genre_item");
-    // Create a dictionary entry
-    DATA[key] = value;
-    div.innerHTML = `
-
-      <button id=${key}>${key}</button>
-      `;
-    genre.appendChild(div);
-  }
-});
-document.getElementById("GenreID").addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON" && !is_loading) {
-    document.getElementById(current_genre_id).style.backgroundColor =
-      "transparent";
-    document.getElementById(current_genre_id).style.color = "wheat";
-    var key = e.target.id;
-    current_genre_id = key;
-    e.target.style.backgroundColor = "wheat";
-    e.target.style.color = "black";
-    removeAllElements();
-    loadImages(DATA[key]["numImagesAvailable"], 20, DATA[key]["ID"]);
-  }
-});
 
 function removeAllElements() {
   // Get the div element by its ID
@@ -88,22 +40,17 @@ function removeAllElements() {
   myDiv.innerHTML = "";
 }
 
-// Unsplash API
-const numImagesAvailable = 535; //how many photos are total in the collection
-const numItemsToGenerate = 40; //how many photos you want to display
-const imageWidth = 1920; //image width in pixels
-const imageHeight = 1080; //image height in pixels
-const collectionID = 4332580; //Space, the collection ID from the original url
-
-var wallpaper_lis = [];
-
-function getImageURLs(randomNumber, collectionID) {
+function getImageURLs(page) {
   return new Promise((resolve, reject) => {
-    fetch(
-      `https://source.unsplash.com/collection/${collectionID}/${imageWidth}x${imageHeight}/?sig=${randomNumber}`
-    )
+    fetch(`https://sweet-home-backend.onrender.com/api/image/list?page=${page}`) 
       .then((response) => {
-        wallpaper_lis.push(response.url);
+        return response.json();
+      })
+      .then((data) => {
+        for (let i = 0; i < data.length; i++) {
+          wallpaper_lis.push(data[i].download_url);
+        }
+        console.log(wallpaper_lis);
         resolve();
       })
       .catch(reject);
@@ -111,19 +58,12 @@ function getImageURLs(randomNumber, collectionID) {
 }
 
 // Generate random image URLs
-function loadImages(
-  numImagesAvailable,
-  numItemsToGenerate,
-  collectionID = 4332580
-) {
+function loadImages(page=1) {
   showLoading();
   is_loading = true;
   let promises = [];
 
-  for (let i = 0; i < numItemsToGenerate; i++) {
-    let randomImageIndex = Math.floor(Math.random() * numImagesAvailable);
-    promises.push(getImageURLs(randomImageIndex, collectionID));
-  }
+  promises.push(getImageURLs(page));
 
   // Wait for all promises to be resolved
   Promise.all(promises)
@@ -136,10 +76,10 @@ function loadImages(
       console.error("Error fetching images:", error);
     });
 }
-
 // Function to load and arrange images using Masonry
 function loadAndArrangeImages() {
   const imageContainer = document.getElementById("imageContainer");
+  console.log(wallpaper_lis);
 
   wallpaper_lis.forEach((url) => {
     const img = new Image();
@@ -153,7 +93,6 @@ function loadAndArrangeImages() {
   // Use imagesLoaded to ensure all images are loaded before initializing Masonry
   imagesLoaded(imageContainer, function () {
     // Initialize Masonry
-    // Initialize Masonry
     const masonry = new Masonry(".grid", {
       itemSelector: "grid-item",
       columnWidth: 200, // Adjust as needed
@@ -162,37 +101,6 @@ function loadAndArrangeImages() {
     });
   });
 }
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-      document
-        .getElementById("Display_img")
-        .setAttribute("src", e.target.result);
-    };
-    console.log(input.files[0]);
-
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-
-// Load more images
-// Function to check if user has scrolled to the bottom
-function isAtBottom() {
-  return (
-    Wallpaper_dialoge.scrollTop + Wallpaper_dialoge.clientHeight >=
-    Wallpaper_dialoge.scrollHeight
-  );
-}
-
-// Event listener for scroll
-Wallpaper_dialoge.addEventListener("scroll", () => {
-  if (isAtBottom() && Wallpaper_upload.style.display == "none") {
-    wallpaper_lis.length = 0;
-    loadImages(numImagesAvailable, numItemsToGenerate, collectionID);
-  }
-});
 
 function showLoading() {
   document.getElementById("loader").style.display = "block";
@@ -201,21 +109,6 @@ function showLoading() {
 function hideLoading() {
   document.getElementById("loader").style.display = "none";
 }
-
-Wallpaper_upload_button.addEventListener("click", () => {
-  grid.style.display = "none";
-  genre.style.display = "none";
-  hideLoading();
-  Wallpaper_upload.style.display = "block";
-  
-
-  Wallpaper_upload_button.style.color = "#42a5f5";
-  Wallpaper_Home_button.style.color = "white";
-});
-
-Wallpaper_Home_button.addEventListener("click", () => {
-  Show_home();
-});
 
 function Show_home() {
   grid.style.display = "grid";
@@ -240,7 +133,7 @@ wallpaper_button.addEventListener("click", () => {
   wallpaper_lis.length = 0;
   removeAllElements();
   Show_home();
-  loadImages(numImagesAvailable, numItemsToGenerate, collectionID);
+  loadImages();
   Wallpaper_dialoge.showModal();
 });
 Wallpaper_close.addEventListener("click", () => {
@@ -249,3 +142,52 @@ Wallpaper_close.addEventListener("click", () => {
 });
 
 
+
+Wallpaper_upload_button.addEventListener("click", () => {
+  grid.style.display = "none";
+  genre.style.display = "none";
+  hideLoading();
+  Wallpaper_upload.style.display = "block";
+  
+
+  Wallpaper_upload_button.style.color = "#42a5f5";
+  Wallpaper_Home_button.style.color = "white";
+});
+
+Wallpaper_Home_button.addEventListener("click", () => {
+  Show_home();
+});
+
+
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      document
+        .getElementById("Display_img")
+        .setAttribute("src", e.target.result);
+    };
+    console.log(input.files[0]);
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+
+function isAtBottom() {
+  return (
+    Wallpaper_dialoge.scrollTop + Wallpaper_dialoge.clientHeight >=
+    Wallpaper_dialoge.scrollHeight
+  );
+}
+let page = 1;
+// Event listener for scroll
+Wallpaper_dialoge.addEventListener("scroll", () => {
+  if (isAtBottom() && Wallpaper_upload.style.display == "none") {
+    page++;
+    wallpaper_lis.length = 0;
+    loadImages(page);
+  }
+});

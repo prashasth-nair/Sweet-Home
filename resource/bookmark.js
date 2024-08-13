@@ -1,6 +1,5 @@
 var Bookmark_dialoge = document.querySelector(".Bookmark_window");
-
-const Bookmark_close = document.querySelector("#bookmark_close");
+var Bookmark_cancel = document.querySelector("#bookmark_cancel");
 const bookmark_button = document.querySelector("#add_bookmark");
 const bookmark_save = document.querySelector("#bookmark_save");
 const bookmark_name_box = document.querySelector("#name_box");
@@ -11,11 +10,6 @@ const bookmarkLayout = document.getElementById("bookmark_layout");
 
 var Bookmark_delete_dialoge = document.querySelector(".delete_bookmark_dialog");
 
-// delete one bookmark - Testing(Remove later)
-
-// json_delete = []
-// localStorage.setItem("bookmarks", JSON.stringify(json_delete));
-
 // Inserting bookmarks in grid from storage
 if (localStorage.getItem("bookmarks") != null) {
   generate_bookmark_block();
@@ -23,6 +17,8 @@ if (localStorage.getItem("bookmarks") != null) {
 
 // Display the bookmark dialoge
 bookmark_button.addEventListener("click", () => {
+  icon.style.background = "url(../src/world-wide-web.png) no-repeat";
+  icon.style.backgroundSize = "100% 100%";
   Bookmark_dialoge.showModal();
 });
 
@@ -39,6 +35,33 @@ function idGenerator() {
     }
   }
   return randomId;
+}
+
+bookmark_url_box.addEventListener("input", (e) => {
+  if (bookmark_url_box.value.includes(".")) {
+    icon.style.background =
+      "url(https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://" +
+      bookmark_url_box.value +
+      "&size=128) no-repeat";
+    icon.style.backgroundSize = "100% 100%";
+  }
+  if (bookmark_url_box.value == "") {
+    icon.style.background = "url(../src/world-wide-web.png) no-repeat";
+    icon.style.backgroundSize = "100% 100%";
+  }
+});
+
+Bookmark_cancel.addEventListener("click", () => {
+  closeDialog();
+});
+
+function closeDialog() {
+  // Clear the text field
+  document.getElementById("name_box").value = "";
+  document.getElementById("url_box").value = "";
+
+  // Hide the dialog
+  Bookmark_dialoge.close();
 }
 
 function generate_bookmark_block() {
@@ -77,7 +100,11 @@ function generate_bookmark_block() {
 
 // Bookmark dialog functions
 bookmark_save.addEventListener("click", () => {
-  if (bookmark_name_box.value != "" && bookmark_url_box.value != "") {
+  if (bookmark_name_box.value == "") {
+    alert("Please enter a name for the bookmark");
+  } else if (bookmark_url_box.value == "") {
+    alert("Please enter a URL for the bookmark");
+  } else {
     var website_name = bookmark_name_box.value; // Get website name
     var website_url = bookmark_url_box.value; // Get website url
     var website_id = idGenerator(); // Generate random id
@@ -230,7 +257,6 @@ if (localStorage.getItem("bookmarks") != null) {
       if (e.target.id != "bookmark_layout") {
         e.preventDefault();
         element_id = e.target.parentElement.id;
-        // console.log(element_id);
         //x and y position of mouse or touch
         let mouseX = e.clientX || e.touches[0].clientX;
         let mouseY = e.clientY || e.touches[0].clientY;
@@ -271,7 +297,6 @@ if (localStorage.getItem("bookmarks") != null) {
 }
 
 // Delete bookmark
-// Delete bookmark
 document.getElementById("delete_bookmark").addEventListener("click", (e) => {
   if (contextMenu.style.visibility == "visible") {
     contextMenu.style.visibility = "hidden";
@@ -287,12 +312,13 @@ document.getElementById("delete_bookmark").addEventListener("click", (e) => {
   }
 
   // Clear any existing content in the dialog
-  Bookmark_delete_dialoge.innerHTML = '';
+  Bookmark_delete_dialoge.innerHTML = "";
 
   var item = document.createElement("div");
   item.setAttribute("id", "delete_text");
   var label = document.createElement("label");
-  label.innerHTML = "Are you sure you want to delete " + json[index]["name"] + " bookmark?";
+  label.innerHTML =
+    "Are you sure you want to delete " + json[index]["name"] + " bookmark?";
   item.appendChild(label);
 
   // Add buttons to the dialog
@@ -322,7 +348,6 @@ document.getElementById("delete_bookmark").addEventListener("click", (e) => {
   });
 
   confirmButton.addEventListener("click", () => {
-    console.log(element_id);
     const element = document.getElementById(element_id);
 
     if (element) {
@@ -331,8 +356,9 @@ document.getElementById("delete_bookmark").addEventListener("click", (e) => {
         console.log("Element found");
       }
       let json_delete = json.filter((json) => json.id !== element_id); // Remove the element from the JSON array if element_id is string
-      json_delete = json_delete.filter((json) => json.id !== Number(element_id)); // Remove the element from the JSON array if element_id is number
-      console.log(json_delete);
+      json_delete = json_delete.filter(
+        (json) => json.id !== Number(element_id)
+      ); // Remove the element from the JSON array if element_id is number
 
       localStorage.setItem("bookmarks", JSON.stringify(json_delete));
 

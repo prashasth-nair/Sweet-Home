@@ -54,6 +54,7 @@ document.getElementById("preview_apply").addEventListener("click", () => {
         console.log("id", Wallpaper_Url);
       }
       Wallpaper_dialoge.close();
+      Image_Preview_end();
       removeAllElements();
 
 });

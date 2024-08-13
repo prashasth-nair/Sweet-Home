@@ -10,7 +10,7 @@
     />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' data: https://images.unsplash.com/ https://source.unsplash.com/ https://cdnjs.cloudflare.com/ https://sweet-home-backend.onrender.com https://t2.gstatic.com/; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://fonts.googleapis.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
+      content="default-src 'self' data: https://picsum.photos  https://fastly.picsum.photos https://cdnjs.cloudflare.com/ https://sweet-home-backend.onrender.com https://t2.gstatic.com/; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://source.unsplash.com/ ; style-src 'self' https://fonts.googleapis.com/ https://images.unsplash.com/ https://cdnjs.cloudflare.com/ 'unsafe-inline' https://images.unsplash.com/ https://source.unsplash.com/ ; font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ https://source.unsplash.com/ ; worker-src 'self' https://images.unsplash.com/  blob:;"
     />
     <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <link
@@ -78,7 +78,7 @@
         <h3 id="Bookmark_title">CREATE BOOKMARK</h3>
       </div>
       <div class="bookmark_main">
-        <div class="icon"><div class="icon-field"></div></div>
+        <div class="icon"><div class="icon-field" id="icon_image"></div></div>
 
         <div class="forms">
           <div class="form-group">
@@ -100,20 +100,11 @@
         </div>
       </div>
       <div class="bookmark_footer">
-        <button
-          id="bookmark_cancel"
-          class="dbutton"
-          onclick="bookmark_dialog.close()"
-        >
-          Cancel
-        </button>
+        <button id="bookmark_cancel" class="dbutton">Cancel</button>
         <button id="bookmark_save" class="dbutton">Save</button>
       </div>
     </dialog>
     <dialog class="delete_bookmark_dialog">
-      <!-- <button class="Close" id="delete_close">
-        <i class="fa-solid fa-x"></i>
-      </button> -->
       <div class="delte_dialoge_button">
         <button id="delete_cancel" class="dbutton">Cancel</button>
         <button id="delete_confirm" class="dbutton">Delete</button>
@@ -219,13 +210,11 @@
     <div id="context-menu">
       <div class="menu_item" id="delete_bookmark">Delete</div>
       <div class="menu_item" id="edit_bookmark">Edit</div>
-    
+
       <!-- <div class="menu_item" id="open_in_new_tab">Open In New Tab</div> -->
       <!-- <div class="menu_item">Menu Item 4</div> -->
       <!-- <div class="menu_item">Menu Item 5</div> -->
     </div>
-
-
 
     <script src="resource/bookmark.js"></script>
     <script
@@ -234,8 +223,8 @@
     ></script>
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
-    <script src="resource/web-animations.js"></script>
-    <script src="resource/hammer.js"></script>
+    <!-- <script src="resource/web-animations.js"></script> -->
+    <!-- <script src="resource/hammer.js"></script> -->
     <script src="main.js"></script>
 
     <!-- Wallpaper JS files -->

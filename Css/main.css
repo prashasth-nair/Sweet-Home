@@ -15,6 +15,9 @@ body {
 #Text {
   padding-right: 10px;
   padding-left: 10px;
+  background-color: #292b2b;
+  color: white;
+  font-size: 16px;
   /* Tell the input to use all the available space */
   flex-grow: 2;
   border-radius: 15px 0px 0px 15px;
@@ -69,6 +72,7 @@ input:focus {
     -1px 1px 2px rgb(0 0 0 / 10%), 1px -1px 2px rgb(0 0 0 / 10%);
   color: white;
   padding: 0px;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
 }
 
 #settings {
@@ -132,13 +136,16 @@ input:focus {
   color: white;
   padding: 0px;
   width: 50vw;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 1));
 }
 
 #Search_button {
   /* Just a little styling to make it pretty */
-  border: 1px solid white;
-  background: white;
-  color: black;
+  border: 0px;
+  background-color: #292b2b;
+  color: gray;
+  width: 50px;
+  font-size: 18px;
   border-radius: 0px 15px 15px 0px;
 }
 
@@ -173,15 +180,17 @@ input:focus {
   top: 50px;
   display: flex;
   margin: 0 auto;
+  
 
   flex-direction: row;
   width: 46vw;
-  height: 35px;
+  height: 45px;
   /* This bit draws the box around it */
   border: none;
 
   /* I've used padding so you can see the edges of the elements. */
   padding: 2px;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
 }
 
 #add_bookmark {
@@ -189,7 +198,10 @@ input:focus {
   color: #ffffff;
   border: none;
   padding: 10px;
-  font-size: 18px;
+  font-size: 24px;
+  
+  
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 1));
 }
 
 
