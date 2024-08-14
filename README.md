@@ -23,7 +23,7 @@ Upgrade your browsing experience and make the most out of every new tab opening.
 - [ ] Add Weather
 - [ ] Add more customization options
 - [ ] Improve settings dialogue Box
-- [ ] Add bookmarks
+- [X] Add bookmarks
 - [ ] Add favourites in wallpaper gallery
 
 ## Developer 
